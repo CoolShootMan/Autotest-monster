@@ -22,16 +22,20 @@ def page_element_click(page: Page, selector, index=0):
         logger.info(f'点击了元素-{selector}')
     page.locator(selector=selector).nth(index).click()
 
-def page_element_role_click(page: Page, role, name, index=None):
+def page_element_role_click(page: Page, role, name, index=None, exact=False, force=False):
     """ 页面点击事件
         role: 内置定位器，定位效果比selector更好
     """
     with allure.step(f'点击了元素-{role},出现文本-{name}'):
         logger.info(f'点击了元素-{role},出现文本-{name}')
     if index is not None:
-        page.get_by_role(role=role, name=name).nth(index=index).click()
+        locator = page.get_by_role(role=role, name=name, exact=exact).nth(index=index)
+        locator.scroll_into_view_if_needed()
+        locator.click(force=force)
     else:
-        page.get_by_role(role=role, name=name).first.click()
+        locator = page.get_by_role(role=role, name=name, exact=exact).first
+        locator.scroll_into_view_if_needed()
+        locator.click(force=force)
 
 def page_element_label_click(page: Page, text, index=0):
     """ 页面点击事件
@@ -47,11 +51,11 @@ def page_element_input_fill(page: Page, selector,value):
         logger.info(f'元素-{selector},填充文本-{value}')
     page.locator(selector=selector).fill(value=value)
 
-def page_element_input_role_fill(page: Page, role, name, value):
+def page_element_input_role_fill(page: Page, role, name, value, exact=False):
     """ 页面input框文本填充 """
     with allure.step(f'元素-{role} ({name}),填充文本-{value}'):
         logger.info(f'元素-{role} ({name}),填充文本-{value}')
-    page.get_by_role(role=role, name=name).fill(value=value)
+    page.get_by_role(role=role, name=name, exact=exact).fill(value=value)
 
 def page_element_input_placeholder_fill(page: Page, placeholder, value):
     """ 页面input框文本填充 """
@@ -83,6 +87,14 @@ def page_open(page: Page, url):
     """ 打开页面方法封装 """
     with allure.step(f'打开-{url}'):
         logger.info(f'打开-{url}')
-    page.goto(url=url, timeout=120000)
+    page.goto(url=url, wait_until="load", timeout=120000)
+    
+    # DEBUG: Proof of cookies for user
+    cookies = page.context.cookies()
+    logger.debug(f"Authentication state check - Cookies count: {len(cookies)}")
+    if len(cookies) > 0:
+        logger.debug(f"Sample Cookie (session): {[c['name'] for c in cookies]}")
+    else:
+        logger.warning("No cookies found in context! Storage state may not be loaded.")
 
         

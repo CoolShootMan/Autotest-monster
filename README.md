@@ -24,7 +24,7 @@
 ├─log
 │  └─YYYY-MM-DD.log	# 日志文件
 ├─page
-  └─home.py	  # UI层基础封装
+  └─home.py		# UI层基础封装
 ├─recordings	# 录制步骤的文件存放位置，AI可参考此处元素
 ├─report
 │  ├─data           # allure测试结果数据

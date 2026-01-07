@@ -183,10 +183,12 @@ with open(test_case_path, "r", encoding="utf-8") as file:
     l = []
     d = {}
     test_case_raw_data = yaml.safe_load(file.read())
+    ids = []
     for k,v in test_case_raw_data.items():
         l.append({k:v})
+        ids.append(k)
 
-@pytest.fixture(params=l)
+@pytest.fixture(params=l, ids=ids)
 def smokecases1(request):
     """ 参数化测试用例 """
     return request.param

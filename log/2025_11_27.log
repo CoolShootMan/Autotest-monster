@@ -1,0 +1,467 @@
+2025-11-27 17:17:29.276 | INFO     | __main__:start_autotest:22 - 
+
+     _   _   _ _____ ___    _____ _____ ____ _____ 
+    / \ | | | |_   _/ _ \  |_   _| ____/ ___|_   _|
+   / _ \| | | | | || | | |   | | |  _| \___ \ | |  
+  / ___ \ |_| | | || |_| |   | | | |___ ___) || |  
+ /_/   \_\___/  |_| \___/    |_| |_____|____/ |_|  
+"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'./o--000'"`-0-0-'"
+
+      Starting      ...     ...     ...
+2025-11-27 17:17:29.277 | INFO     | __main__:start_autotest:39 - Allure data directory: C:\Users\tester\autotest-monster\allure-results\20251127_171729
+2025-11-27 17:17:30.507 | INFO     | tools:allure_title:101 - title:testT3370
+2025-11-27 17:17:30.508 | INFO     | tools:allure_step_no:125 - step:description:Verify set the product card alignment at the store level
+2025-11-27 17:17:30.508 | INFO     | tools:allure_step_no:125 - step:test_step:{'open': 'https://release.pear.us/yu-xiao', 'goto_storefront_top_aligned': {'url': 'https://release.pear.us/storefront-modules#Storefront', 'timeout': 90000}, 'check_label_top_aligned': {'label': 'Top aligned', 'timeout': 60000}, 'publish_button_click_top_aligned': {}, 'verify_navigation_after_publish_top_aligned': {'url_regex': 'https://release.pear.us/yu-xiao', 'timeout': 70000, 'warning_message': 'Shop page redirect after publish timed out (stuck in loading). Directly navigating to Storefront.', 'fallback_url': 'https://release.pear.us/storefront-modules#Storefront', 'fallback_timeout': 90000}, 'click_mui_svg_icon_top_aligned': {}, 'click_products_text_top_aligned': {}, 'wait_for_product_cards_top_aligned': {'index': 1, 'timeout': 60000}, 'verify_top_aligned_layout': {'timeout': 60000, 'screenshot_path': 'recordings/top_aligned_failure.png', 'threshold': 5}, 'goto_storefront_waterfall': {'url': 'https://release.pear.us/storefront-modules#Storefront', 'timeout': 90000}, 'check_label_waterfall': {'label': 'Waterfall', 'timeout': 60000}, 'publish_button_click_waterfall': {}, 'verify_navigation_after_publish_waterfall': {'url_regex': 'https://release.pear.us/yu-xiao', 'timeout': 70000, 'warning_message': 'Shop page redirect after publish timed out (stuck in loading). Directly navigating to Storefront.', 'fallback_url': 'https://release.pear.us/storefront-modules#Storefront', 'fallback_timeout': 90000}, 'click_mui_svg_icon_waterfall': {}, 'click_products_text_waterfall': {}, 'wait_for_product_cards_waterfall': {'index': 1, 'timeout': 60000}, 'verify_waterfall_layout': {'url_regex': 'https://release.pear.us/yu-xiao', 'timeout': 70000, 'warning_message': 'Shop page redirect after publish timed out (stuck in loading). Directly navigating to Storefront.', 'fallback_url': 'https://release.pear.us/storefront-modules#Storefront', 'fallback_timeout': 90000, 'wait_for_timeout': 1500, 'wait_for_cards_timeout': 60000}}
+2025-11-27 17:17:30.508 | INFO     | page.home:page_open:85 - 打开-https://release.pear.us/yu-xiao
+2025-11-27 17:18:21.587 | INFO     | Test_Katana.test_ui:test_case:182 - Waterfall layout: Found 23 cards with 9 unique heights
+2025-11-27 17:18:21.587 | INFO     | Test_Katana.test_ui:test_case:183 - Heights: {482, 354, 226, 327, 504, 219, 304, 376, 283}
+2025-11-27 17:18:21.587 | INFO     | tools:allure_step_no:125 - step:expect_result:{'description': 'Product card alignment should be verified for both Top aligned and Waterfall layouts.', 'assertions': [{'assertion_type': 'top_aligned_layout', 'selector': 'div.MuiBox-root[data-index]', 'threshold': 5}, {'assertion_type': 'waterfall_layout', 'selector': 'div.MuiBox-root[data-index]'}]}
+2025-11-27 17:18:23.102 | INFO     | tools:allure_title:101 - title:testT3554
+2025-11-27 17:18:23.102 | INFO     | tools:allure_step_no:125 - step:description:Verify adding a new module in shop page
+2025-11-27 17:18:23.102 | INFO     | tools:allure_step_no:125 - step:test_step:{'open': 'https://release.pear.us/yu-xiao', 'sleep_after_open': 5000, 'click_xpath1': {'xpath': '.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButton-outlinedPrimary.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.MuiButton-colorPrimary.katana-y72g0l >> nth=0'}, 'sleep_wait_menu': 1500, 'R_click3': {'role': 'button', 'name': 'Add new module'}, 'fill1': {'role': 'textbox', 'name': 'Enter title of the module', 'value': 'test new module'}, 'R_click4': {'role': 'button', 'name': 'Add'}, 'sleep_wait_product': 5000, 'R_click5': {'role': 'button', 'index': 1}, 'sleep_wait_confirm': 2000, 'R_click7': {'role': 'button', 'name': 'Add', 'index': -1}, 'sleep_after_publish': 5000}
+2025-11-27 17:18:23.102 | INFO     | page.home:page_open:85 - 打开-https://release.pear.us/yu-xiao
+2025-11-27 17:18:42.531 | INFO     | page.home:page_element_role_click:30 - 点击了元素-button,出现文本-Add new module
+2025-11-27 17:18:42.722 | INFO     | page.home:page_element_input_role_fill:53 - 元素-textbox (Enter title of the module),填充文本-test new module
+2025-11-27 17:18:42.974 | INFO     | page.home:page_element_role_click:30 - 点击了元素-button,出现文本-Add
+2025-11-27 17:18:48.304 | INFO     | page.home:page_element_role_click:30 - 点击了元素-button,出现文本-None
+2025-11-27 17:18:50.586 | INFO     | page.home:page_element_role_click:30 - 点击了元素-button,出现文本-Add
+2025-11-27 17:18:55.662 | INFO     | tools:allure_step_no:125 - step:expect_result:{'description': 'Verify that the new module is visible on the page', 'assertions': [{'assertion_type': 'element_visible_by_text', 'text': 'test new module'}]}
+2025-11-27 17:18:55.828 | INFO     | tools:allure_title:101 - title:testT4264
+2025-11-27 17:18:55.829 | INFO     | tools:allure_step_no:125 - step:description:Verify that the user adds the link card of 'Image' on the shop page(navigation bar) and module menu
+2025-11-27 17:18:55.829 | INFO     | tools:allure_step_no:125 - step:test_step:{'open': 'https://release.pear.us/yu-xiao', 'sleep_after_open': 5000, 'click_xpath1': {'xpath': '.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButton-outlinedPrimary.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.MuiButton-colorPrimary.katana-y72g0l >> nth=0'}, 'sleep_wait_menu': 1500, 'R_click3': {'role': 'button', 'name': 'Add new module'}, 'check1': {'role': 'radio', 'name': 'Links (select a type below)'}, 'l_click_regex1': {'text': 'Image$', 'index': 1}, 'check2': {'role': 'radio', 'name': 'Carousel Carousel'}, 'sleep2': 5000, 'R_click4': {'role': 'button', 'name': 'Add'}, 'R_click5': {'role': 'button', 'name': 'Add new', 'index': -1}, 'fill_by_placeholder_and_locator1': {'placeholder': 'https://example.com', 'locator': 'input[name="url"]', 'value': 'www.baidu.com'}, 'fill2': {'placeholder': 'As the bold title on your', 'value': 'test aotu image'}, 'upload1': {'text': 'Upload', 'file_path': 'C:\\Users\\tester\\gemini-autotest\\data\\test image.jpg'}, 'wait_for_upload_and_ui_update1': {'timeout': 2000}, 'sleep_after_close': 3000}
+2025-11-27 17:19:16.180 | INFO     | page.home:page_element_role_click:30 - 点击了元素-button,出现文本-Add new module
+2025-11-27 17:19:21.977 | INFO     | page.home:page_element_role_click:30 - 点击了元素-button,出现文本-Add
+2025-11-27 17:19:22.284 | INFO     | page.home:page_element_role_click:30 - 点击了元素-button,出现文本-Add new
+2025-11-27 17:19:29.368 | INFO     | page.home:page_element_input_placeholder_fill:59 - 元素-https://example.com,填充文本-www.baidu.com
+2025-11-27 17:19:29.443 | INFO     | page.home:page_element_input_placeholder_fill:59 - 元素-As the bold title on your,填充文本-test aotu image
+2025-11-27 17:19:40.042 | INFO     | tools:allure_step_no:125 - step:expect_result:{'description': 'Verify that the new image link card is visible on the page', 'assertions': [{'assertion_type': 'element_visible_by_text', 'text': 'test aotu image'}]}
+2025-11-27 17:19:40.129 | INFO     | tools:allure_title:101 - title:testT1993
+2025-11-27 17:19:40.129 | INFO     | tools:allure_step_no:125 - step:description:Verify the function of generating invitation link
+2025-11-27 17:19:40.129 | INFO     | tools:allure_step_no:125 - step:test_step:{'open': 'https://release.pear.us/collabs', 'click_copy_button': {}, 'click_manage_button': {}, 'click_copy_outline_icon': {}}
+2025-11-27 17:19:40.129 | INFO     | page.home:page_open:85 - 打开-https://release.pear.us/collabs
+2025-11-27 17:19:42.549 | INFO     | page.home:page_open:85 - 打开-https://release.pear.us/collabs
+2025-11-27 17:19:46.938 | INFO     | tools:allure_step_no:125 - step:Click the "Copy" button (first from recording script)
+2025-11-27 17:19:47.122 | INFO     | tools:allure_step_no:125 - step:Click the "Manage" button
+2025-11-27 17:19:47.290 | INFO     | tools:allure_step_no:125 - step:Click the "CopyOutlineIcon" button (second CopyOutlineIcon)
+2025-11-27 17:19:47.655 | INFO     | tools:allure_step_no:125 - step:Copied link: https://release.pear.us/yu-xiao/invitation?invitationCode=4js0rq
+2025-11-27 17:19:47.655 | INFO     | tools:allure_step_no:125 - step:expect_result:{'description': 'An invite link should be generated with the option to copy or share', 'assertions': [{'assertion_type': 'element_visible_by_text', 'text': 'Link copied'}]}
+2025-11-27 17:19:47.673 | INFO     | tools:allure_title:101 - title:testT855
+2025-11-27 17:19:47.674 | INFO     | tools:allure_step_no:125 - step:description:Verify the Share button functionality
+2025-11-27 17:19:47.674 | INFO     | tools:allure_step_no:125 - step:test_step:{'open': 'https://release.pear.us/yu-xiao', 'sleep_after_open': 3000, 'R_click_share': {'role': 'button', 'name': 'Share'}, 'sleep_after_click': 2000}
+2025-11-27 17:19:47.674 | INFO     | page.home:page_open:85 - 打开-https://release.pear.us/yu-xiao
+2025-11-27 17:20:03.658 | INFO     | page.home:page_element_role_click:30 - 点击了元素-button,出现文本-Share
+2025-11-27 17:20:06.538 | INFO     | tools:allure_step_no:125 - step:expect_result:{'description': 'Share dialog or options should appear', 'assertions': [{'assertion_type': 'element_visible', 'selector': "[role='dialog']"}]}
+2025-11-27 17:20:06.543 | INFO     | tools:allure_title:101 - title:testT1747
+2025-11-27 17:20:06.543 | INFO     | tools:allure_step_no:125 - step:description:Verify creating a draft post
+2025-11-27 17:20:06.543 | INFO     | tools:allure_step_no:125 - step:test_step:{'open': 'https://release.pear.us/yu-xiao', 'sleep_after_open': 3000, 'click_xpath_plus_button': {'xpath': '//*[@id="root"]/section/div/div/div[2]/div[3]/div/div[3]/div'}, 'sleep_after_plus': 2000, 'R_click_create_post_link': {'role': 'link', 'name': 'Create a Post'}, 'sleep_check_nav': 2000, 'screenshot_check_nav': {'name': 'check_nav_t1747.png'}, 'wait_for_url_create_post': {'url': 'https://release.pear.us/post/create?c=POST_PAGE', 'timeout': 5000}, 'R_click_Close_button': {'role': 'button', 'name': 'Close'}, 'sleep_after_close': 2000, 'R_click_content_tab': {'role': 'tab', 'name': 'Content'}, 'sleep_after_tab': 1000, 'fill_title': {'role': 'textbox', 'name': 'Pick a bold title for your', 'value': 'Auto test darft post'}, 'fill_subtitle': {'role': 'textbox', 'name': 'Enter a subtitle to enrich', 'value': 'Auto test'}, 'R_click_save_draft': {'role': 'button', 'name': 'Save as draft'}, 'sleep_after_save': 3000}
+2025-11-27 17:20:06.544 | INFO     | page.home:page_open:85 - 打开-https://release.pear.us/yu-xiao
+2025-11-27 17:20:26.640 | INFO     | page.home:page_element_role_click:30 - 点击了元素-link,出现文本-Create a Post
+2025-11-27 17:20:29.844 | INFO     | page.home:page_element_role_click:30 - 点击了元素-button,出现文本-Close
+2025-11-27 17:20:32.037 | INFO     | page.home:page_element_role_click:30 - 点击了元素-tab,出现文本-Content
+2025-11-27 17:20:33.161 | INFO     | page.home:page_element_input_role_fill:53 - 元素-textbox (Pick a bold title for your),填充文本-Auto test darft post
+2025-11-27 17:20:33.204 | INFO     | page.home:page_element_input_role_fill:53 - 元素-textbox (Enter a subtitle to enrich),填充文本-Auto test
+2025-11-27 17:20:33.385 | INFO     | page.home:page_element_role_click:30 - 点击了元素-button,出现文本-Save as draft
+2025-11-27 17:20:36.440 | INFO     | tools:allure_step_no:125 - step:expect_result:{'description': 'Draft post should be saved successfully', 'assertions': [{'assertion_type': 'element_visible_by_text', 'text': 'Post saved as draft!'}]}
+2025-11-27 18:02:35.467 | INFO     | __main__:start_autotest:22 - 
+
+     _   _   _ _____ ___    _____ _____ ____ _____ 
+    / \ | | | |_   _/ _ \  |_   _| ____/ ___|_   _|
+   / _ \| | | | | || | | |   | | |  _| \___ \ | |  
+  / ___ \ |_| | | || |_| |   | | | |___ ___) || |  
+ /_/   \_\___/  |_| \___/    |_| |_____|____/ |_|  
+"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'./o--000'"`-0-0-'"
+
+      Starting      ...     ...     ...
+2025-11-27 18:02:35.467 | INFO     | __main__:start_autotest:39 - Allure data directory: C:\Users\tester\autotest-monster\allure-results\20251127_180235
+2025-11-27 18:02:37.168 | INFO     | __main__:start_autotest:44 - Calling test status update script: C:\Users\tester\autotest-monster\tools\update_test_status.py
+2025-11-27 18:07:59.264 | INFO     | __main__:start_autotest:22 - 
+
+     _   _   _ _____ ___    _____ _____ ____ _____ 
+    / \ | | | |_   _/ _ \  |_   _| ____/ ___|_   _|
+   / _ \| | | | | || | | |   | | |  _| \___ \ | |  
+  / ___ \ |_| | | || |_| |   | | | |___ ___) || |  
+ /_/   \_\___/  |_| \___/    |_| |_____|____/ |_|  
+"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'./o--000'"`-0-0-'"
+
+      Starting      ...     ...     ...
+2025-11-27 18:07:59.264 | INFO     | __main__:start_autotest:39 - Allure data directory: C:\Users\tester\autotest-monster\allure-results\20251127_180759
+2025-11-27 18:08:01.204 | INFO     | __main__:start_autotest:55 - Calling test status update script: C:\Users\tester\autotest-monster\tools\update_test_status.py
+2025-11-27 18:10:44.643 | INFO     | __main__:start_autotest:22 - 
+
+     _   _   _ _____ ___    _____ _____ ____ _____ 
+    / \ | | | |_   _/ _ \  |_   _| ____/ ___|_   _|
+   / _ \| | | | | || | | |   | | |  _| \___ \ | |  
+  / ___ \ |_| | | || |_| |   | | | |___ ___) || |  
+ /_/   \_\___/  |_| \___/    |_| |_____|____/ |_|  
+"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'./o--000'"`-0-0-'"
+
+      Starting      ...     ...     ...
+2025-11-27 18:10:44.643 | INFO     | __main__:start_autotest:39 - Allure data directory: C:\Users\tester\autotest-monster\allure-results\20251127_181044
+2025-11-27 18:10:46.452 | INFO     | __main__:start_autotest:52 - Pytest stdout: ============================= test session starts =============================
+platform win32 -- Python 3.9.8, pytest-7.4.4, pluggy-1.5.0 -- D:\Program Files\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\tester\autotest-monster
+configfile: pytest.ini
+plugins: allure-pytest-2.15.0, anyio-4.9.0, Faker-37.12.0, base-url-2.0.0, playwright-0.7.1
+collecting ... collected 6 items
+
+test_case/UI/Test_Katana/test_ui.py::test_case[smokecases10-chromium] 
+INTERNALERROR> Traceback (most recent call last):
+INTERNALERROR>   File "D:\Program Files\lib\site-packages\_pytest\main.py", line 271, in wrap_session
+INTERNALERROR>     session.exitstatus = doit(config, session) or 0
+INTERNALERROR>   File "D:\Program Files\lib\site-packages\_pytest\main.py", line 325, in _main
+INTERNALERROR>     config.hook.pytest_runtestloop(session=session)
+INTERNALERROR>   File "D:\Program Files\lib\site-packages\pluggy\_hooks.py", line 513, in __call__
+INTERNALERROR>     return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+INTERNALERROR>   File "D:\Program Files\lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+INTERNALERROR>     return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+INTERNALERROR>   File "D:\Program Files\lib\site-packages\pluggy\_callers.py", line 182, in _multicall
+INTERNALERROR>     return outcome.get_result()
+INTERNALERROR>   File "D:\Program Files\lib\site-packages\pluggy\_result.py", line 100, in get_result
+INTERNALERROR>     raise exc.with_traceback(exc.__traceback__)
+INTERNALERROR>   File "D:\Program Files\lib\site-packages\pluggy\_callers.py", line 103, in _multicall
+INTERNALERROR>     res = hook_impl.function(*args)
+INTERNALERROR>   File "D:\Program Files\lib\site-packages\_pytest\main.py", line 350, in pytest_runtestloop
+INTERNALERROR>     item.config.hook.pytest_runtest_protocol(item=item, nextitem=nextitem)
+INTERNALERROR>   File "D:\Program Files\lib\site-packages\pluggy\_hooks.py", line 513, in __call__
+INTERNALERROR>     return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+INTERNALERROR>   File "D:\Program Files\lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+INTERNALERROR>     return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+INTERNALERROR>   File "D:\Program Files\lib\site-packages\pluggy\_callers.py", line 182, in _multicall
+INTERNALERROR>     return outcome.get_result()
+INTERNALERROR>   File "D:\Program Files\lib\site-packages\pluggy\_result.py", line 100, in get_result
+INTERNALERROR>     raise exc.with_traceback(exc.__traceback__)
+INTERNALERROR>   File "D:\Program Files\lib\site-packages\pluggy\_callers.py", line 103, in _multicall
+INTERNALERROR>     res = hook_impl.function(*args)
+INTERNALERROR>   File "D:\Program Files\lib\site-packages\_pytest\runner.py", line 114, in pytest_runtest_protocol
+INTERNALERROR>     runtestprotocol(item, nextitem=nextitem)
+INTERNALERROR>   File "D:\Program Files\lib\site-packages\_pytest\runner.py", line 127, in runtestprotocol
+INTERNALERROR>     rep = call_and_report(item, "setup", log)
+INTERNALERROR>   File "D:\Program Files\lib\site-packages\_pytest\runner.py", line 224, in call_and_report
+INTERNALERROR>     report: TestReport = hook.pytest_runtest_makereport(item=item, call=call)
+INTERNALERROR>   File "D:\Program Files\lib\site-packages\pluggy\_hooks.py", line 513, in __call__
+INTERNALERROR>     return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+INTERNALERROR>   File "D:\Program Files\lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+INTERNALERROR>     return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+INTERNALERROR>   File "D:\Program Files\lib\site-packages\pluggy\_callers.py", line 156, in _multicall
+INTERNALERROR>     teardown[0].send(outcome)
+INTERNALERROR>   File "D:\Program Files\lib\site-packages\_pytest\skipping.py", line 274, in pytest_runtest_makereport
+INTERNALERROR>     elif not rep.skipped and xfailed:
+INTERNALERROR> AttributeError: 'generator' object has no attribute 'skipped'
+
+============================= 1 warning in 1.25s ==============================
+
+2025-11-27 18:10:46.453 | ERROR    | __main__:start_autotest:53 - Pytest stderr: 
+2025-11-27 18:10:46.453 | INFO     | __main__:start_autotest:57 - Calling test status update script: C:\Users\tester\autotest-monster\tools\update_test_status.py
+2025-11-27 18:14:14.185 | INFO     | __main__:start_autotest:22 - 
+
+     _   _   _ _____ ___    _____ _____ ____ _____ 
+    / \ | | | |_   _/ _ \  |_   _| ____/ ___|_   _|
+   / _ \| | | | | || | | |   | | |  _| \___ \ | |  
+  / ___ \ |_| | | || |_| |   | | | |___ ___) || |  
+ /_/   \_\___/  |_| \___/    |_| |_____|____/ |_|  
+"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'./o--000'"`-0-0-'"
+
+      Starting      ...     ...     ...
+2025-11-27 18:14:14.185 | INFO     | __main__:start_autotest:39 - Allure data directory: C:\Users\tester\autotest-monster\allure-results\20251127_181414
+2025-11-27 18:17:22.581 | INFO     | __main__:start_autotest:55 - Calling test status update script: C:\Users\tester\autotest-monster\tools\update_test_status.py
+2025-11-27 18:23:52.823 | INFO     | __main__:start_autotest:22 - 
+
+     _   _   _ _____ ___    _____ _____ ____ _____ 
+    / \ | | | |_   _/ _ \  |_   _| ____/ ___|_   _|
+   / _ \| | | | | || | | |   | | |  _| \___ \ | |  
+  / ___ \ |_| | | || |_| |   | | | |___ ___) || |  
+ /_/   \_\___/  |_| \___/    |_| |_____|____/ |_|  
+"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'./o--000'"`-0-0-'"
+
+      Starting      ...     ...     ...
+2025-11-27 18:23:52.823 | INFO     | __main__:start_autotest:39 - Allure data directory: C:\Users\tester\autotest-monster\allure-results\20251127_182352
+2025-11-27 18:26:59.778 | INFO     | __main__:start_autotest:55 - Calling test status update script: C:\Users\tester\autotest-monster\tools\update_test_status.py
+2025-11-27 18:32:46.350 | INFO     | __main__:start_autotest:22 - 
+
+     _   _   _ _____ ___    _____ _____ ____ _____ 
+    / \ | | | |_   _/ _ \  |_   _| ____/ ___|_   _|
+   / _ \| | | | | || | | |   | | |  _| \___ \ | |  
+  / ___ \ |_| | | || |_| |   | | | |___ ___) || |  
+ /_/   \_\___/  |_| \___/    |_| |_____|____/ |_|  
+"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'./o--000'"`-0-0-'"
+
+      Starting      ...     ...     ...
+2025-11-27 18:32:46.351 | INFO     | __main__:start_autotest:39 - Allure data directory: C:\Users\tester\autotest-monster\allure-results\20251127_183246
+2025-11-27 18:32:46.805 | INFO     | __main__:start_autotest:48 - Pytest stdout: pytest 7.4.4
+
+2025-11-27 18:32:46.805 | ERROR    | __main__:start_autotest:49 - Pytest stderr: 
+2025-11-27 18:32:46.805 | INFO     | __main__:start_autotest:53 - Calling test status update script: C:\Users\tester\autotest-monster\tools\update_test_status.py
+2025-11-27 18:34:21.382 | INFO     | __main__:start_autotest:24 - Python executable: D:\Program Files\python.EXE
+2025-11-27 18:34:21.382 | INFO     | __main__:start_autotest:25 - sys.path: ['C:\\Users\\tester\\autotest-monster', 'D:\\Program Files\\python39.zip', 'D:\\Program Files\\DLLs', 'D:\\Program Files\\lib', 'D:\\Program Files', 'D:\\Program Files\\lib\\site-packages']
+2025-11-27 18:34:21.382 | INFO     | __main__:start_autotest:26 - 
+
+     _   _   _ _____ ___    _____ _____ ____ _____ 
+    / \ | | | |_   _/ _ \  |_   _| ____/ ___|_   _|
+   / _ \| | | | | || | | |   | | |  _| \___ \ | |  
+  / ___ \ |_| | | || |_| |   | | | |___ ___) || |  
+ /_/   \_\___/  |_| \___/    |_| |_____|____/ |_|  
+"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'./o--000'"`-0-0-'"
+
+      Starting      ...     ...     ...
+2025-11-27 18:34:21.382 | INFO     | __main__:start_autotest:43 - Allure data directory: C:\Users\tester\autotest-monster\allure-results\20251127_183421
+2025-11-27 18:37:27.007 | INFO     | __main__:start_autotest:56 - Pytest stdout: ============================= test session starts =============================
+platform win32 -- Python 3.9.8, pytest-7.4.4, pluggy-1.5.0 -- D:\Program Files\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\tester\autotest-monster
+configfile: pytest.ini
+plugins: allure-pytest-2.15.0, anyio-4.9.0, Faker-37.12.0, base-url-2.0.0, playwright-0.7.1
+collecting ... collected 6 items
+
+test_case/UI/Test_Katana/test_ui.py::test_case[smokecases10-chromium] PASSED
+test_case/UI/Test_Katana/test_ui.py::test_case[smokecases11-chromium] PASSED
+test_case/UI/Test_Katana/test_ui.py::test_case[smokecases12-chromium] PASSED
+test_case/UI/Test_Katana/test_ui.py::test_case[smokecases13-chromium] PASSED
+test_case/UI/Test_Katana/test_ui.py::test_case[smokecases14-chromium] PASSED
+test_case/UI/Test_Katana/test_ui.py::test_case[smokecases15-chromium] PASSED
+
+======================== 6 passed in 185.09s (0:03:05) ========================
+
+2025-11-27 18:37:27.007 | ERROR    | __main__:start_autotest:57 - Pytest stderr: [32m2025-11-27 18:34:22.740[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_title[0m:[36m101[0m - [1mtitle:testT3370[0m
+[32m2025-11-27 18:34:22.740[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:description:Verify set the product card alignment at the store level[0m
+[32m2025-11-27 18:34:22.740[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:test_step:{'open': 'https://release.pear.us/yu-xiao', 'goto_storefront_top_aligned': {'url': 'https://release.pear.us/storefront-modules#Storefront', 'timeout': 90000}, 'check_label_top_aligned': {'label': 'Top aligned', 'timeout': 60000}, 'publish_button_click_top_aligned': {}, 'verify_navigation_after_publish_top_aligned': {'url_regex': 'https://release.pear.us/yu-xiao', 'timeout': 70000, 'warning_message': 'Shop page redirect after publish timed out (stuck in loading). Directly navigating to Storefront.', 'fallback_url': 'https://release.pear.us/storefront-modules#Storefront', 'fallback_timeout': 90000}, 'click_mui_svg_icon_top_aligned': {}, 'click_products_text_top_aligned': {}, 'wait_for_product_cards_top_aligned': {'index': 1, 'timeout': 60000}, 'verify_top_aligned_layout': {'timeout': 60000, 'screenshot_path': 'recordings/top_aligned_failure.png', 'threshold': 5}, 'goto_storefront_waterfall': {'url': 'https://release.pear.us/storefront-modules#Storefront', 'timeout': 90000}, 'check_label_waterfall': {'label': 'Waterfall', 'timeout': 60000}, 'publish_button_click_waterfall': {}, 'verify_navigation_after_publish_waterfall': {'url_regex': 'https://release.pear.us/yu-xiao', 'timeout': 70000, 'warning_message': 'Shop page redirect after publish timed out (stuck in loading). Directly navigating to Storefront.', 'fallback_url': 'https://release.pear.us/storefront-modules#Storefront', 'fallback_timeout': 90000}, 'click_mui_svg_icon_waterfall': {}, 'click_products_text_waterfall': {}, 'wait_for_product_cards_waterfall': {'index': 1, 'timeout': 60000}, 'verify_waterfall_layout': {'url_regex': 'https://release.pear.us/yu-xiao', 'timeout': 70000, 'warning_message': 'Shop page redirect after publish timed out (stuck in loading). Directly navigating to Storefront.', 'fallback_url': 'https://release.pear.us/storefront-modules#Storefront', 'fallback_timeout': 90000, 'wait_for_timeout': 1500, 'wait_for_cards_timeout': 60000}}[0m
+[32m2025-11-27 18:34:22.741[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_open[0m:[36m85[0m - [1m打开-https://release.pear.us/yu-xiao[0m
+[32m2025-11-27 18:35:13.447[0m | [1mINFO    [0m | [36mTest_Katana.test_ui[0m:[36mtest_case[0m:[36m182[0m - [1mWaterfall layout: Found 23 cards with 9 unique heights[0m
+[32m2025-11-27 18:35:13.447[0m | [1mINFO    [0m | [36mTest_Katana.test_ui[0m:[36mtest_case[0m:[36m183[0m - [1mHeights: {482, 354, 226, 327, 504, 219, 304, 376, 283}[0m
+[32m2025-11-27 18:35:13.447[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:expect_result:{'description': 'Product card alignment should be verified for both Top aligned and Waterfall layouts.', 'assertions': [{'assertion_type': 'top_aligned_layout', 'selector': 'div.MuiBox-root[data-index]', 'threshold': 5}, {'assertion_type': 'waterfall_layout', 'selector': 'div.MuiBox-root[data-index]'}]}[0m
+[32m2025-11-27 18:35:14.798[0m | [1mINFO    [0m | [36mTest_Katana.conftest[0m:[36mpytest_runtest_makereport[0m:[36m56[0m - [1mTEST_STATUS: T3370 - passed[0m
+[32m2025-11-27 18:35:14.801[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_title[0m:[36m101[0m - [1mtitle:testT3554[0m
+[32m2025-11-27 18:35:14.801[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:description:Verify adding a new module in shop page[0m
+[32m2025-11-27 18:35:14.801[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:test_step:{'open': 'https://release.pear.us/yu-xiao', 'sleep_after_open': 5000, 'click_xpath1': {'xpath': '.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButton-outlinedPrimary.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.MuiButton-colorPrimary.katana-y72g0l >> nth=0'}, 'sleep_wait_menu': 1500, 'R_click3': {'role': 'button', 'name': 'Add new module'}, 'fill1': {'role': 'textbox', 'name': 'Enter title of the module', 'value': 'test new module'}, 'R_click4': {'role': 'button', 'name': 'Add'}, 'sleep_wait_product': 5000, 'R_click5': {'role': 'button', 'index': 1}, 'sleep_wait_confirm': 2000, 'R_click7': {'role': 'button', 'name': 'Add', 'index': -1}, 'sleep_after_publish': 5000}[0m
+[32m2025-11-27 18:35:14.801[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_open[0m:[36m85[0m - [1m打开-https://release.pear.us/yu-xiao[0m
+[32m2025-11-27 18:35:34.642[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Add new module[0m
+[32m2025-11-27 18:35:34.856[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_input_role_fill[0m:[36m53[0m - [1m元素-textbox (Enter title of the module),填充文本-test new module[0m
+[32m2025-11-27 18:35:35.110[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Add[0m
+[32m2025-11-27 18:35:40.536[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-None[0m
+[32m2025-11-27 18:35:42.841[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Add[0m
+[32m2025-11-27 18:35:47.894[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:expect_result:{'description': 'Verify that the new module is visible on the page', 'assertions': [{'assertion_type': 'element_visible_by_text', 'text': 'test new module'}]}[0m
+[32m2025-11-27 18:35:48.020[0m | [1mINFO    [0m | [36mTest_Katana.conftest[0m:[36mpytest_runtest_makereport[0m:[36m56[0m - [1mTEST_STATUS: T3554 - passed[0m
+[32m2025-11-27 18:35:48.025[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_title[0m:[36m101[0m - [1mtitle:testT4264[0m
+[32m2025-11-27 18:35:48.025[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:description:Verify that the user adds the link card of 'Image' on the shop page(navigation bar) and module menu[0m
+[32m2025-11-27 18:35:48.025[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:test_step:{'open': 'https://release.pear.us/yu-xiao', 'sleep_after_open': 5000, 'click_xpath1': {'xpath': '.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButton-outlinedPrimary.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.MuiButton-colorPrimary.katana-y72g0l >> nth=0'}, 'sleep_wait_menu': 1500, 'R_click3': {'role': 'button', 'name': 'Add new module'}, 'check1': {'role': 'radio', 'name': 'Links (select a type below)'}, 'l_click_regex1': {'text': 'Image$', 'index': 1}, 'check2': {'role': 'radio', 'name': 'Carousel Carousel'}, 'sleep2': 5000, 'R_click4': {'role': 'button', 'name': 'Add'}, 'R_click5': {'role': 'button', 'name': 'Add new', 'index': -1}, 'fill_by_placeholder_and_locator1': {'placeholder': 'https://example.com', 'locator': 'input[name="url"]', 'value': 'www.baidu.com'}, 'fill2': {'placeholder': 'As the bold title on your', 'value': 'test aotu image'}, 'upload1': {'text': 'Upload', 'file_path': 'C:\\Users\\tester\\gemini-autotest\\data\\test image.jpg'}, 'wait_for_upload_and_ui_update1': {'timeout': 2000}, 'sleep_after_close': 3000}[0m
+[32m2025-11-27 18:36:09.026[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Add new module[0m
+[32m2025-11-27 18:36:14.917[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Add[0m
+[32m2025-11-27 18:36:15.190[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Add new[0m
+[32m2025-11-27 18:36:21.007[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_input_placeholder_fill[0m:[36m59[0m - [1m元素-https://example.com,填充文本-www.baidu.com[0m
+[32m2025-11-27 18:36:21.074[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_input_placeholder_fill[0m:[36m59[0m - [1m元素-As the bold title on your,填充文本-test aotu image[0m
+[32m2025-11-27 18:36:29.834[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:expect_result:{'description': 'Verify that the new image link card is visible on the page', 'assertions': [{'assertion_type': 'element_visible_by_text', 'text': 'test aotu image'}]}[0m
+[32m2025-11-27 18:36:29.910[0m | [1mINFO    [0m | [36mTest_Katana.conftest[0m:[36mpytest_runtest_makereport[0m:[36m56[0m - [1mTEST_STATUS: T4264 - passed[0m
+[32m2025-11-27 18:36:29.912[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_title[0m:[36m101[0m - [1mtitle:testT1993[0m
+[32m2025-11-27 18:36:29.912[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:description:Verify the function of generating invitation link[0m
+[32m2025-11-27 18:36:29.912[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:test_step:{'open': 'https://release.pear.us/collabs', 'click_copy_button': {}, 'click_manage_button': {}, 'click_copy_outline_icon': {}}[0m
+[32m2025-11-27 18:36:29.912[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_open[0m:[36m85[0m - [1m打开-https://release.pear.us/collabs[0m
+[32m2025-11-27 18:36:32.243[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_open[0m:[36m85[0m - [1m打开-https://release.pear.us/collabs[0m
+[32m2025-11-27 18:36:36.225[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:Click the "Copy" button (first from recording script)[0m
+[32m2025-11-27 18:36:36.334[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:Click the "Manage" button[0m
+[32m2025-11-27 18:36:36.534[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:Click the "CopyOutlineIcon" button (second CopyOutlineIcon)[0m
+[32m2025-11-27 18:36:36.962[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:Copied link: https://release.pear.us/yu-xiao/invitation?invitationCode=4js0rq[0m
+[32m2025-11-27 18:36:36.962[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:expect_result:{'description': 'An invite link should be generated with the option to copy or share', 'assertions': [{'assertion_type': 'element_visible_by_text', 'text': 'Link copied'}]}[0m
+[32m2025-11-27 18:36:36.977[0m | [1mINFO    [0m | [36mTest_Katana.conftest[0m:[36mpytest_runtest_makereport[0m:[36m56[0m - [1mTEST_STATUS: T1993 - passed[0m
+[32m2025-11-27 18:36:36.983[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_title[0m:[36m101[0m - [1mtitle:testT855[0m
+[32m2025-11-27 18:36:36.983[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:description:Verify the Share button functionality[0m
+[32m2025-11-27 18:36:36.983[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:test_step:{'open': 'https://release.pear.us/yu-xiao', 'sleep_after_open': 3000, 'R_click_share': {'role': 'button', 'name': 'Share'}, 'sleep_after_click': 2000}[0m
+[32m2025-11-27 18:36:36.983[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_open[0m:[36m85[0m - [1m打开-https://release.pear.us/yu-xiao[0m
+[32m2025-11-27 18:36:54.338[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Share[0m
+[32m2025-11-27 18:36:57.180[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:expect_result:{'description': 'Share dialog or options should appear', 'assertions': [{'assertion_type': 'element_visible', 'selector': "[role='dialog']"}]}[0m
+[32m2025-11-27 18:36:57.181[0m | [1mINFO    [0m | [36mTest_Katana.conftest[0m:[36mpytest_runtest_makereport[0m:[36m56[0m - [1mTEST_STATUS: T855 - passed[0m
+[32m2025-11-27 18:36:57.183[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_title[0m:[36m101[0m - [1mtitle:testT1747[0m
+[32m2025-11-27 18:36:57.183[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:description:Verify creating a draft post[0m
+[32m2025-11-27 18:36:57.183[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:test_step:{'open': 'https://release.pear.us/yu-xiao', 'sleep_after_open': 3000, 'click_xpath_plus_button': {'xpath': '//*[@id="root"]/section/div/div/div[2]/div[3]/div/div[3]/div'}, 'sleep_after_plus': 2000, 'R_click_create_post_link': {'role': 'link', 'name': 'Create a Post'}, 'sleep_check_nav': 2000, 'screenshot_check_nav': {'name': 'check_nav_t1747.png'}, 'wait_for_url_create_post': {'url': 'https://release.pear.us/post/create?c=POST_PAGE', 'timeout': 5000}, 'R_click_Close_button': {'role': 'button', 'name': 'Close'}, 'sleep_after_close': 2000, 'R_click_content_tab': {'role': 'tab', 'name': 'Content'}, 'sleep_after_tab': 1000, 'fill_title': {'role': 'textbox', 'name': 'Pick a bold title for your', 'value': 'Auto test darft post'}, 'fill_subtitle': {'role': 'textbox', 'name': 'Enter a subtitle to enrich', 'value': 'Auto test'}, 'R_click_save_draft': {'role': 'button', 'name': 'Save as draft'}, 'sleep_after_save': 3000}[0m
+[32m2025-11-27 18:36:57.183[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_open[0m:[36m85[0m - [1m打开-https://release.pear.us/yu-xiao[0m
+[32m2025-11-27 18:37:16.555[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-link,出现文本-Create a Post[0m
+[32m2025-11-27 18:37:19.613[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Close[0m
+[32m2025-11-27 18:37:21.802[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-tab,出现文本-Content[0m
+[32m2025-11-27 18:37:22.922[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_input_role_fill[0m:[36m53[0m - [1m元素-textbox (Pick a bold title for your),填充文本-Auto test darft post[0m
+[32m2025-11-27 18:37:22.966[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_input_role_fill[0m:[36m53[0m - [1m元素-textbox (Enter a subtitle to enrich),填充文本-Auto test[0m
+[32m2025-11-27 18:37:23.118[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Save as draft[0m
+[32m2025-11-27 18:37:26.184[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:expect_result:{'description': 'Draft post should be saved successfully', 'assertions': [{'assertion_type': 'element_visible_by_text', 'text': 'Post saved as draft!'}]}[0m
+[32m2025-11-27 18:37:26.239[0m | [1mINFO    [0m | [36mTest_Katana.conftest[0m:[36mpytest_runtest_makereport[0m:[36m56[0m - [1mTEST_STATUS: T1747 - passed[0m
+
+2025-11-27 18:37:27.008 | INFO     | __main__:start_autotest:61 - Calling test status update script: C:\Users\tester\autotest-monster\tools\update_test_status.py
+2025-11-27 18:44:21.677 | INFO     | __main__:start_autotest:24 - Python executable: D:\Program Files\python.EXE
+2025-11-27 18:44:21.677 | INFO     | __main__:start_autotest:25 - sys.path: ['C:\\Users\\tester\\autotest-monster', 'D:\\Program Files\\python39.zip', 'D:\\Program Files\\DLLs', 'D:\\Program Files\\lib', 'D:\\Program Files', 'D:\\Program Files\\lib\\site-packages']
+2025-11-27 18:44:21.677 | INFO     | __main__:start_autotest:26 - 
+
+     _   _   _ _____ ___    _____ _____ ____ _____ 
+    / \ | | | |_   _/ _ \  |_   _| ____/ ___|_   _|
+   / _ \| | | | | || | | |   | | |  _| \___ \ | |  
+  / ___ \ |_| | | || |_| |   | | | |___ ___) || |  
+ /_/   \_\___/  |_| \___/    |_| |_____|____/ |_|  
+"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'./o--000'"`-0-0-'"
+
+      Starting      ...     ...     ...
+2025-11-27 18:44:21.677 | INFO     | __main__:start_autotest:43 - Allure data directory: C:\Users\tester\autotest-monster\allure-results\20251127_184421
+2025-11-27 18:47:31.710 | INFO     | __main__:start_autotest:56 - Pytest stdout: ============================= test session starts =============================
+platform win32 -- Python 3.9.8, pytest-7.4.4, pluggy-1.5.0 -- D:\Program Files\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\tester\autotest-monster
+configfile: pytest.ini
+plugins: allure-pytest-2.15.0, anyio-4.9.0, Faker-37.12.0, base-url-2.0.0, playwright-0.7.1
+collecting ... collected 6 items
+
+test_case/UI/Test_Katana/test_ui.py::test_case[smokecases10-chromium] PASSED
+test_case/UI/Test_Katana/test_ui.py::test_case[smokecases11-chromium] PASSED
+test_case/UI/Test_Katana/test_ui.py::test_case[smokecases12-chromium] PASSED
+test_case/UI/Test_Katana/test_ui.py::test_case[smokecases13-chromium] PASSED
+test_case/UI/Test_Katana/test_ui.py::test_case[smokecases14-chromium] PASSED
+test_case/UI/Test_Katana/test_ui.py::test_case[smokecases15-chromium] PASSED
+
+======================== 6 passed in 189.51s (0:03:09) ========================
+
+2025-11-27 18:47:31.710 | ERROR    | __main__:start_autotest:57 - Pytest stderr: [32m2025-11-27 18:44:23.008[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_title[0m:[36m101[0m - [1mtitle:testT3370[0m
+[32m2025-11-27 18:44:23.008[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:description:Verify set the product card alignment at the store level[0m
+[32m2025-11-27 18:44:23.008[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:test_step:{'open': 'https://release.pear.us/yu-xiao', 'goto_storefront_top_aligned': {'url': 'https://release.pear.us/storefront-modules#Storefront', 'timeout': 90000}, 'check_label_top_aligned': {'label': 'Top aligned', 'timeout': 60000}, 'publish_button_click_top_aligned': {}, 'verify_navigation_after_publish_top_aligned': {'url_regex': 'https://release.pear.us/yu-xiao', 'timeout': 70000, 'warning_message': 'Shop page redirect after publish timed out (stuck in loading). Directly navigating to Storefront.', 'fallback_url': 'https://release.pear.us/storefront-modules#Storefront', 'fallback_timeout': 90000}, 'click_mui_svg_icon_top_aligned': {}, 'click_products_text_top_aligned': {}, 'wait_for_product_cards_top_aligned': {'index': 1, 'timeout': 60000}, 'verify_top_aligned_layout': {'timeout': 60000, 'screenshot_path': 'recordings/top_aligned_failure.png', 'threshold': 5}, 'goto_storefront_waterfall': {'url': 'https://release.pear.us/storefront-modules#Storefront', 'timeout': 90000}, 'check_label_waterfall': {'label': 'Waterfall', 'timeout': 60000}, 'publish_button_click_waterfall': {}, 'verify_navigation_after_publish_waterfall': {'url_regex': 'https://release.pear.us/yu-xiao', 'timeout': 70000, 'warning_message': 'Shop page redirect after publish timed out (stuck in loading). Directly navigating to Storefront.', 'fallback_url': 'https://release.pear.us/storefront-modules#Storefront', 'fallback_timeout': 90000}, 'click_mui_svg_icon_waterfall': {}, 'click_products_text_waterfall': {}, 'wait_for_product_cards_waterfall': {'index': 1, 'timeout': 60000}, 'verify_waterfall_layout': {'url_regex': 'https://release.pear.us/yu-xiao', 'timeout': 70000, 'warning_message': 'Shop page redirect after publish timed out (stuck in loading). Directly navigating to Storefront.', 'fallback_url': 'https://release.pear.us/storefront-modules#Storefront', 'fallback_timeout': 90000, 'wait_for_timeout': 1500, 'wait_for_cards_timeout': 60000}}[0m
+[32m2025-11-27 18:44:23.008[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_open[0m:[36m85[0m - [1m打开-https://release.pear.us/yu-xiao[0m
+[32m2025-11-27 18:45:18.661[0m | [1mINFO    [0m | [36mTest_Katana.test_ui[0m:[36mtest_case[0m:[36m182[0m - [1mWaterfall layout: Found 23 cards with 9 unique heights[0m
+[32m2025-11-27 18:45:18.661[0m | [1mINFO    [0m | [36mTest_Katana.test_ui[0m:[36mtest_case[0m:[36m183[0m - [1mHeights: {482, 354, 226, 327, 504, 219, 304, 376, 283}[0m
+[32m2025-11-27 18:45:18.661[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:expect_result:{'description': 'Product card alignment should be verified for both Top aligned and Waterfall layouts.', 'assertions': [{'assertion_type': 'top_aligned_layout', 'selector': 'div.MuiBox-root[data-index]', 'threshold': 5}, {'assertion_type': 'waterfall_layout', 'selector': 'div.MuiBox-root[data-index]'}]}[0m
+[32m2025-11-27 18:45:19.977[0m | [1mINFO    [0m | [36mTest_Katana.conftest[0m:[36mpytest_runtest_makereport[0m:[36m56[0m - [1mTEST_STATUS: T3370 - passed[0m
+[32m2025-11-27 18:45:19.980[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_title[0m:[36m101[0m - [1mtitle:testT3554[0m
+[32m2025-11-27 18:45:19.980[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:description:Verify adding a new module in shop page[0m
+[32m2025-11-27 18:45:19.980[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:test_step:{'open': 'https://release.pear.us/yu-xiao', 'sleep_after_open': 5000, 'click_xpath1': {'xpath': '.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButton-outlinedPrimary.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.MuiButton-colorPrimary.katana-y72g0l >> nth=0'}, 'sleep_wait_menu': 1500, 'R_click3': {'role': 'button', 'name': 'Add new module'}, 'fill1': {'role': 'textbox', 'name': 'Enter title of the module', 'value': 'test new module'}, 'R_click4': {'role': 'button', 'name': 'Add'}, 'sleep_wait_product': 5000, 'R_click5': {'role': 'button', 'index': 1}, 'sleep_wait_confirm': 2000, 'R_click7': {'role': 'button', 'name': 'Add', 'index': -1}, 'sleep_after_publish': 5000}[0m
+[32m2025-11-27 18:45:19.980[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_open[0m:[36m85[0m - [1m打开-https://release.pear.us/yu-xiao[0m
+[32m2025-11-27 18:45:40.726[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Add new module[0m
+[32m2025-11-27 18:45:40.942[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_input_role_fill[0m:[36m53[0m - [1m元素-textbox (Enter title of the module),填充文本-test new module[0m
+[32m2025-11-27 18:45:41.268[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Add[0m
+[32m2025-11-27 18:45:46.717[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-None[0m
+[32m2025-11-27 18:45:49.067[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Add[0m
+[32m2025-11-27 18:45:54.138[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:expect_result:{'description': 'Verify that the new module is visible on the page', 'assertions': [{'assertion_type': 'element_visible_by_text', 'text': 'test new module'}]}[0m
+[32m2025-11-27 18:45:54.277[0m | [1mINFO    [0m | [36mTest_Katana.conftest[0m:[36mpytest_runtest_makereport[0m:[36m56[0m - [1mTEST_STATUS: T3554 - passed[0m
+[32m2025-11-27 18:45:54.281[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_title[0m:[36m101[0m - [1mtitle:testT4264[0m
+[32m2025-11-27 18:45:54.281[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:description:Verify that the user adds the link card of 'Image' on the shop page(navigation bar) and module menu[0m
+[32m2025-11-27 18:45:54.281[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:test_step:{'open': 'https://release.pear.us/yu-xiao', 'sleep_after_open': 5000, 'click_xpath1': {'xpath': '.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButton-outlinedPrimary.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.MuiButton-colorPrimary.katana-y72g0l >> nth=0'}, 'sleep_wait_menu': 1500, 'R_click3': {'role': 'button', 'name': 'Add new module'}, 'check1': {'role': 'radio', 'name': 'Links (select a type below)'}, 'l_click_regex1': {'text': 'Image$', 'index': 1}, 'check2': {'role': 'radio', 'name': 'Carousel Carousel'}, 'sleep2': 5000, 'R_click4': {'role': 'button', 'name': 'Add'}, 'R_click5': {'role': 'button', 'name': 'Add new', 'index': -1}, 'fill_by_placeholder_and_locator1': {'placeholder': 'https://example.com', 'locator': 'input[name="url"]', 'value': 'www.baidu.com'}, 'fill2': {'placeholder': 'As the bold title on your', 'value': 'test aotu image'}, 'upload1': {'text': 'Upload', 'file_path': 'C:\\Users\\tester\\gemini-autotest\\data\\test image.jpg'}, 'wait_for_upload_and_ui_update1': {'timeout': 2000}, 'sleep_after_close': 3000}[0m
+[32m2025-11-27 18:46:15.399[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Add new module[0m
+[32m2025-11-27 18:46:21.268[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Add[0m
+[32m2025-11-27 18:46:21.537[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Add new[0m
+[32m2025-11-27 18:46:27.550[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_input_placeholder_fill[0m:[36m59[0m - [1m元素-https://example.com,填充文本-www.baidu.com[0m
+[32m2025-11-27 18:46:27.614[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_input_placeholder_fill[0m:[36m59[0m - [1m元素-As the bold title on your,填充文本-test aotu image[0m
+[32m2025-11-27 18:46:36.465[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:expect_result:{'description': 'Verify that the new image link card is visible on the page', 'assertions': [{'assertion_type': 'element_visible_by_text', 'text': 'test aotu image'}]}[0m
+[32m2025-11-27 18:46:36.543[0m | [1mINFO    [0m | [36mTest_Katana.conftest[0m:[36mpytest_runtest_makereport[0m:[36m56[0m - [1mTEST_STATUS: T4264 - passed[0m
+[32m2025-11-27 18:46:36.547[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_title[0m:[36m101[0m - [1mtitle:testT1993[0m
+[32m2025-11-27 18:46:36.547[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:description:Verify the function of generating invitation link[0m
+[32m2025-11-27 18:46:36.547[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:test_step:{'open': 'https://release.pear.us/collabs', 'click_copy_button': {}, 'click_manage_button': {}, 'click_copy_outline_icon': {}}[0m
+[32m2025-11-27 18:46:36.547[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_open[0m:[36m85[0m - [1m打开-https://release.pear.us/collabs[0m
+[32m2025-11-27 18:46:38.962[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_open[0m:[36m85[0m - [1m打开-https://release.pear.us/collabs[0m
+[32m2025-11-27 18:46:42.125[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:Click the "Copy" button (first from recording script)[0m
+[32m2025-11-27 18:46:42.214[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:Click the "Manage" button[0m
+[32m2025-11-27 18:46:42.370[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:Click the "CopyOutlineIcon" button (second CopyOutlineIcon)[0m
+[32m2025-11-27 18:46:42.725[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:Copied link: https://release.pear.us/yu-xiao/invitation?invitationCode=4js0rq[0m
+[32m2025-11-27 18:46:42.726[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:expect_result:{'description': 'An invite link should be generated with the option to copy or share', 'assertions': [{'assertion_type': 'element_visible_by_text', 'text': 'Link copied'}]}[0m
+[32m2025-11-27 18:46:42.739[0m | [1mINFO    [0m | [36mTest_Katana.conftest[0m:[36mpytest_runtest_makereport[0m:[36m56[0m - [1mTEST_STATUS: T1993 - passed[0m
+[32m2025-11-27 18:46:42.744[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_title[0m:[36m101[0m - [1mtitle:testT855[0m
+[32m2025-11-27 18:46:42.744[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:description:Verify the Share button functionality[0m
+[32m2025-11-27 18:46:42.744[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:test_step:{'open': 'https://release.pear.us/yu-xiao', 'sleep_after_open': 3000, 'R_click_share': {'role': 'button', 'name': 'Share'}, 'sleep_after_click': 2000}[0m
+[32m2025-11-27 18:46:42.744[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_open[0m:[36m85[0m - [1m打开-https://release.pear.us/yu-xiao[0m
+[32m2025-11-27 18:46:59.560[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Share[0m
+[32m2025-11-27 18:47:01.968[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:expect_result:{'description': 'Share dialog or options should appear', 'assertions': [{'assertion_type': 'element_visible', 'selector': "[role='dialog']"}]}[0m
+[32m2025-11-27 18:47:01.969[0m | [1mINFO    [0m | [36mTest_Katana.conftest[0m:[36mpytest_runtest_makereport[0m:[36m56[0m - [1mTEST_STATUS: T855 - passed[0m
+[32m2025-11-27 18:47:01.972[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_title[0m:[36m101[0m - [1mtitle:testT1747[0m
+[32m2025-11-27 18:47:01.972[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:description:Verify creating a draft post[0m
+[32m2025-11-27 18:47:01.972[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:test_step:{'open': 'https://release.pear.us/yu-xiao', 'sleep_after_open': 3000, 'click_xpath_plus_button': {'xpath': '//*[@id="root"]/section/div/div/div[2]/div[3]/div/div[3]/div'}, 'sleep_after_plus': 2000, 'R_click_create_post_link': {'role': 'link', 'name': 'Create a Post'}, 'sleep_check_nav': 2000, 'screenshot_check_nav': {'name': 'check_nav_t1747.png'}, 'wait_for_url_create_post': {'url': 'https://release.pear.us/post/create?c=POST_PAGE', 'timeout': 5000}, 'R_click_Close_button': {'role': 'button', 'name': 'Close'}, 'sleep_after_close': 2000, 'R_click_content_tab': {'role': 'tab', 'name': 'Content'}, 'sleep_after_tab': 1000, 'fill_title': {'role': 'textbox', 'name': 'Pick a bold title for your', 'value': 'Auto test darft post'}, 'fill_subtitle': {'role': 'textbox', 'name': 'Enter a subtitle to enrich', 'value': 'Auto test'}, 'R_click_save_draft': {'role': 'button', 'name': 'Save as draft'}, 'sleep_after_save': 3000}[0m
+[32m2025-11-27 18:47:01.972[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_open[0m:[36m85[0m - [1m打开-https://release.pear.us/yu-xiao[0m
+[32m2025-11-27 18:47:21.057[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-link,出现文本-Create a Post[0m
+[32m2025-11-27 18:47:24.041[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Close[0m
+[32m2025-11-27 18:47:26.461[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-tab,出现文本-Content[0m
+[32m2025-11-27 18:47:27.583[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_input_role_fill[0m:[36m53[0m - [1m元素-textbox (Pick a bold title for your),填充文本-Auto test darft post[0m
+[32m2025-11-27 18:47:27.624[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_input_role_fill[0m:[36m53[0m - [1m元素-textbox (Enter a subtitle to enrich),填充文本-Auto test[0m
+[32m2025-11-27 18:47:27.807[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Save as draft[0m
+[32m2025-11-27 18:47:30.859[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:expect_result:{'description': 'Draft post should be saved successfully', 'assertions': [{'assertion_type': 'element_visible_by_text', 'text': 'Post saved as draft!'}]}[0m
+[32m2025-11-27 18:47:30.968[0m | [1mINFO    [0m | [36mTest_Katana.conftest[0m:[36mpytest_runtest_makereport[0m:[36m56[0m - [1mTEST_STATUS: T1747 - passed[0m
+
+2025-11-27 18:47:31.710 | INFO     | __main__:start_autotest:61 - Calling test status update script: C:\Users\tester\autotest-monster\tools\update_test_status.py
+2025-11-27 19:30:42.769 | INFO     | __main__:start_autotest:24 - Python executable: D:\Program Files\python.EXE
+2025-11-27 19:30:42.769 | INFO     | __main__:start_autotest:25 - sys.path: ['C:\\Users\\tester\\autotest-monster', 'D:\\Program Files\\python39.zip', 'D:\\Program Files\\DLLs', 'D:\\Program Files\\lib', 'D:\\Program Files', 'D:\\Program Files\\lib\\site-packages']
+2025-11-27 19:30:42.769 | INFO     | __main__:start_autotest:26 - 
+
+     _   _   _ _____ ___    _____ _____ ____ _____ 
+    / \ | | | |_   _/ _ \  |_   _| ____/ ___|_   _|
+   / _ \| | | | | || | | |   | | |  _| \___ \ | |  
+  / ___ \ |_| | | || |_| |   | | | |___ ___) || |  
+ /_/   \_\___/  |_| \___/    |_| |_____|____/ |_|  
+"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'./o--000'"`-0-0-'"
+
+      Starting      ...     ...     ...
+2025-11-27 19:30:42.770 | INFO     | __main__:start_autotest:43 - Allure data directory: C:\Users\tester\autotest-monster\allure-results\20251127_193042
+2025-11-27 19:34:00.094 | INFO     | __main__:start_autotest:56 - Pytest stdout: ============================= test session starts =============================
+platform win32 -- Python 3.9.8, pytest-7.4.4, pluggy-1.5.0 -- D:\Program Files\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\tester\autotest-monster
+configfile: pytest.ini
+plugins: allure-pytest-2.15.0, anyio-4.9.0, Faker-37.12.0, base-url-2.0.0, playwright-0.7.1
+collecting ... collected 6 items
+
+test_case/UI/Test_Katana/test_ui.py::test_case[smokecases10-chromium] PASSED
+test_case/UI/Test_Katana/test_ui.py::test_case[smokecases11-chromium] PASSED
+test_case/UI/Test_Katana/test_ui.py::test_case[smokecases12-chromium] PASSED
+test_case/UI/Test_Katana/test_ui.py::test_case[smokecases13-chromium] PASSED
+test_case/UI/Test_Katana/test_ui.py::test_case[smokecases14-chromium] PASSED
+test_case/UI/Test_Katana/test_ui.py::test_case[smokecases15-chromium] PASSED
+
+======================== 6 passed in 196.69s (0:03:16) ========================
+
+2025-11-27 19:34:00.094 | ERROR    | __main__:start_autotest:57 - Pytest stderr: [32m2025-11-27 19:30:44.392[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_title[0m:[36m101[0m - [1mtitle:testT3370[0m
+[32m2025-11-27 19:30:44.392[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:description:Verify set the product card alignment at the store level[0m
+[32m2025-11-27 19:30:44.392[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:test_step:{'open': 'https://release.pear.us/yu-xiao', 'goto_storefront_top_aligned': {'url': 'https://release.pear.us/storefront-modules#Storefront', 'timeout': 90000}, 'check_label_top_aligned': {'label': 'Top aligned', 'timeout': 60000}, 'publish_button_click_top_aligned': {}, 'verify_navigation_after_publish_top_aligned': {'url_regex': 'https://release.pear.us/yu-xiao', 'timeout': 70000, 'warning_message': 'Shop page redirect after publish timed out (stuck in loading). Directly navigating to Storefront.', 'fallback_url': 'https://release.pear.us/storefront-modules#Storefront', 'fallback_timeout': 90000}, 'click_mui_svg_icon_top_aligned': {}, 'click_products_text_top_aligned': {}, 'wait_for_product_cards_top_aligned': {'index': 1, 'timeout': 60000}, 'verify_top_aligned_layout': {'timeout': 60000, 'screenshot_path': 'recordings/top_aligned_failure.png', 'threshold': 5}, 'goto_storefront_waterfall': {'url': 'https://release.pear.us/storefront-modules#Storefront', 'timeout': 90000}, 'check_label_waterfall': {'label': 'Waterfall', 'timeout': 60000}, 'publish_button_click_waterfall': {}, 'verify_navigation_after_publish_waterfall': {'url_regex': 'https://release.pear.us/yu-xiao', 'timeout': 70000, 'warning_message': 'Shop page redirect after publish timed out (stuck in loading). Directly navigating to Storefront.', 'fallback_url': 'https://release.pear.us/storefront-modules#Storefront', 'fallback_timeout': 90000}, 'click_mui_svg_icon_waterfall': {}, 'click_products_text_waterfall': {}, 'wait_for_product_cards_waterfall': {'index': 1, 'timeout': 60000}, 'verify_waterfall_layout': {'url_regex': 'https://release.pear.us/yu-xiao', 'timeout': 70000, 'warning_message': 'Shop page redirect after publish timed out (stuck in loading). Directly navigating to Storefront.', 'fallback_url': 'https://release.pear.us/storefront-modules#Storefront', 'fallback_timeout': 90000, 'wait_for_timeout': 1500, 'wait_for_cards_timeout': 60000}}[0m
+[32m2025-11-27 19:30:44.392[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_open[0m:[36m85[0m - [1m打开-https://release.pear.us/yu-xiao[0m
+[32m2025-11-27 19:31:42.076[0m | [1mINFO    [0m | [36mTest_Katana.test_ui[0m:[36mtest_case[0m:[36m182[0m - [1mWaterfall layout: Found 23 cards with 9 unique heights[0m
+[32m2025-11-27 19:31:42.076[0m | [1mINFO    [0m | [36mTest_Katana.test_ui[0m:[36mtest_case[0m:[36m183[0m - [1mHeights: {482, 354, 226, 327, 504, 219, 304, 376, 283}[0m
+[32m2025-11-27 19:31:42.077[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:expect_result:{'description': 'Product card alignment should be verified for both Top aligned and Waterfall layouts.', 'assertions': [{'assertion_type': 'top_aligned_layout', 'selector': 'div.MuiBox-root[data-index]', 'threshold': 5}, {'assertion_type': 'waterfall_layout', 'selector': 'div.MuiBox-root[data-index]'}]}[0m
+[32m2025-11-27 19:31:43.426[0m | [1mINFO    [0m | [36mTest_Katana.conftest[0m:[36mpytest_runtest_makereport[0m:[36m56[0m - [1mTEST_STATUS: T3370 - passed[0m
+[32m2025-11-27 19:31:43.429[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_title[0m:[36m101[0m - [1mtitle:testT3554[0m
+[32m2025-11-27 19:31:43.429[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:description:Verify adding a new module in shop page[0m
+[32m2025-11-27 19:31:43.429[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:test_step:{'open': 'https://release.pear.us/yu-xiao', 'sleep_after_open': 5000, 'click_xpath1': {'xpath': '.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButton-outlinedPrimary.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.MuiButton-colorPrimary.katana-y72g0l >> nth=0'}, 'sleep_wait_menu': 1500, 'R_click3': {'role': 'button', 'name': 'Add new module'}, 'fill1': {'role': 'textbox', 'name': 'Enter title of the module', 'value': 'test new module'}, 'R_click4': {'role': 'button', 'name': 'Add'}, 'sleep_wait_product': 5000, 'R_click5': {'role': 'button', 'index': 1}, 'sleep_wait_confirm': 2000, 'R_click7': {'role': 'button', 'name': 'Add', 'index': -1}, 'sleep_after_publish': 5000}[0m
+[32m2025-11-27 19:31:43.429[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_open[0m:[36m85[0m - [1m打开-https://release.pear.us/yu-xiao[0m
+[32m2025-11-27 19:32:05.045[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Add new module[0m
+[32m2025-11-27 19:32:05.239[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_input_role_fill[0m:[36m53[0m - [1m元素-textbox (Enter title of the module),填充文本-test new module[0m
+[32m2025-11-27 19:32:05.539[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Add[0m
+[32m2025-11-27 19:32:10.849[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-None[0m
+[32m2025-11-27 19:32:13.184[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Add[0m
+[32m2025-11-27 19:32:18.269[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:expect_result:{'description': 'Verify that the new module is visible on the page', 'assertions': [{'assertion_type': 'element_visible_by_text', 'text': 'test new module'}]}[0m
+[32m2025-11-27 19:32:18.345[0m | [1mINFO    [0m | [36mTest_Katana.conftest[0m:[36mpytest_runtest_makereport[0m:[36m56[0m - [1mTEST_STATUS: T3554 - passed[0m
+[32m2025-11-27 19:32:18.347[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_title[0m:[36m101[0m - [1mtitle:testT4264[0m
+[32m2025-11-27 19:32:18.347[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:description:Verify that the user adds the link card of 'Image' on the shop page(navigation bar) and module menu[0m
+[32m2025-11-27 19:32:18.348[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:test_step:{'open': 'https://release.pear.us/yu-xiao', 'sleep_after_open': 5000, 'click_xpath1': {'xpath': '.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButton-outlinedPrimary.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.MuiButton-colorPrimary.katana-y72g0l >> nth=0'}, 'sleep_wait_menu': 1500, 'R_click3': {'role': 'button', 'name': 'Add new module'}, 'check1': {'role': 'radio', 'name': 'Links (select a type below)'}, 'l_click_regex1': {'text': 'Image$', 'index': 1}, 'check2': {'role': 'radio', 'name': 'Carousel Carousel'}, 'sleep2': 5000, 'R_click4': {'role': 'button', 'name': 'Add'}, 'R_click5': {'role': 'button', 'name': 'Add new', 'index': -1}, 'fill_by_placeholder_and_locator1': {'placeholder': 'https://example.com', 'locator': 'input[name="url"]', 'value': 'www.baidu.com'}, 'fill2': {'placeholder': 'As the bold title on your', 'value': 'test aotu image'}, 'upload1': {'text': 'Upload', 'file_path': 'C:\\Users\\tester\\gemini-autotest\\data\\test image.jpg'}, 'wait_for_upload_and_ui_update1': {'timeout': 2000}, 'sleep_after_close': 3000}[0m
+[32m2025-11-27 19:32:39.570[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Add new module[0m
+[32m2025-11-27 19:32:45.321[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Add[0m
+[32m2025-11-27 19:32:45.610[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Add new[0m
+[32m2025-11-27 19:32:49.783[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_input_placeholder_fill[0m:[36m59[0m - [1m元素-https://example.com,填充文本-www.baidu.com[0m
+[32m2025-11-27 19:32:49.863[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_input_placeholder_fill[0m:[36m59[0m - [1m元素-As the bold title on your,填充文本-test aotu image[0m
+[32m2025-11-27 19:32:59.940[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:expect_result:{'description': 'Verify that the new image link card is visible on the page', 'assertions': [{'assertion_type': 'element_visible_by_text', 'text': 'test aotu image'}]}[0m
+[32m2025-11-27 19:33:00.022[0m | [1mINFO    [0m | [36mTest_Katana.conftest[0m:[36mpytest_runtest_makereport[0m:[36m56[0m - [1mTEST_STATUS: T4264 - passed[0m
+[32m2025-11-27 19:33:00.025[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_title[0m:[36m101[0m - [1mtitle:testT1993[0m
+[32m2025-11-27 19:33:00.025[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:description:Verify the function of generating invitation link[0m
+[32m2025-11-27 19:33:00.025[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:test_step:{'open': 'https://release.pear.us/collabs', 'click_copy_button': {}, 'click_manage_button': {}, 'click_copy_outline_icon': {}}[0m
+[32m2025-11-27 19:33:00.025[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_open[0m:[36m85[0m - [1m打开-https://release.pear.us/collabs[0m
+[32m2025-11-27 19:33:03.342[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_open[0m:[36m85[0m - [1m打开-https://release.pear.us/collabs[0m
+[32m2025-11-27 19:33:06.387[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:Click the "Copy" button (first from recording script)[0m
+[32m2025-11-27 19:33:06.484[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:Click the "Manage" button[0m
+[32m2025-11-27 19:33:06.678[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:Click the "CopyOutlineIcon" button (second CopyOutlineIcon)[0m
+[32m2025-11-27 19:33:07.080[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:Copied link: https://release.pear.us/yu-xiao/invitation?invitationCode=4js0rq[0m
+[32m2025-11-27 19:33:07.080[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:expect_result:{'description': 'An invite link should be generated with the option to copy or share', 'assertions': [{'assertion_type': 'element_visible_by_text', 'text': 'Link copied'}]}[0m
+[32m2025-11-27 19:33:07.094[0m | [1mINFO    [0m | [36mTest_Katana.conftest[0m:[36mpytest_runtest_makereport[0m:[36m56[0m - [1mTEST_STATUS: T1993 - passed[0m
+[32m2025-11-27 19:33:07.097[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_title[0m:[36m101[0m - [1mtitle:testT855[0m
+[32m2025-11-27 19:33:07.097[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:description:Verify the Share button functionality[0m
+[32m2025-11-27 19:33:07.097[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:test_step:{'open': 'https://release.pear.us/yu-xiao', 'sleep_after_open': 3000, 'R_click_share': {'role': 'button', 'name': 'Share'}, 'sleep_after_click': 2000}[0m
+[32m2025-11-27 19:33:07.097[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_open[0m:[36m85[0m - [1m打开-https://release.pear.us/yu-xiao[0m
+[32m2025-11-27 19:33:26.699[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Share[0m
+[32m2025-11-27 19:33:29.142[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:expect_result:{'description': 'Share dialog or options should appear', 'assertions': [{'assertion_type': 'element_visible', 'selector': "[role='dialog']"}]}[0m
+[32m2025-11-27 19:33:29.142[0m | [1mINFO    [0m | [36mTest_Katana.conftest[0m:[36mpytest_runtest_makereport[0m:[36m56[0m - [1mTEST_STATUS: T855 - passed[0m
+[32m2025-11-27 19:33:29.146[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_title[0m:[36m101[0m - [1mtitle:testT1747[0m
+[32m2025-11-27 19:33:29.146[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:description:Verify creating a draft post[0m
+[32m2025-11-27 19:33:29.146[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:test_step:{'open': 'https://release.pear.us/yu-xiao', 'sleep_after_open': 3000, 'click_xpath_plus_button': {'xpath': '//*[@id="root"]/section/div/div/div[2]/div[3]/div/div[3]/div'}, 'sleep_after_plus': 2000, 'R_click_create_post_link': {'role': 'link', 'name': 'Create a Post'}, 'sleep_check_nav': 2000, 'screenshot_check_nav': {'name': 'check_nav_t1747.png'}, 'wait_for_url_create_post': {'url': 'https://release.pear.us/post/create?c=POST_PAGE', 'timeout': 5000}, 'R_click_Close_button': {'role': 'button', 'name': 'Close'}, 'sleep_after_close': 2000, 'R_click_content_tab': {'role': 'tab', 'name': 'Content'}, 'sleep_after_tab': 1000, 'fill_title': {'role': 'textbox', 'name': 'Pick a bold title for your', 'value': 'Auto test darft post'}, 'fill_subtitle': {'role': 'textbox', 'name': 'Enter a subtitle to enrich', 'value': 'Auto test'}, 'R_click_save_draft': {'role': 'button', 'name': 'Save as draft'}, 'sleep_after_save': 3000}[0m
+[32m2025-11-27 19:33:29.146[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_open[0m:[36m85[0m - [1m打开-https://release.pear.us/yu-xiao[0m
+[32m2025-11-27 19:33:49.785[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-link,出现文本-Create a Post[0m
+[32m2025-11-27 19:33:52.818[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Close[0m
+[32m2025-11-27 19:33:55.001[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-tab,出现文本-Content[0m
+[32m2025-11-27 19:33:56.130[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_input_role_fill[0m:[36m53[0m - [1m元素-textbox (Pick a bold title for your),填充文本-Auto test darft post[0m
+[32m2025-11-27 19:33:56.172[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_input_role_fill[0m:[36m53[0m - [1m元素-textbox (Enter a subtitle to enrich),填充文本-Auto test[0m
+[32m2025-11-27 19:33:56.371[0m | [1mINFO    [0m | [36mpage.home[0m:[36mpage_element_role_click[0m:[36m30[0m - [1m点击了元素-button,出现文本-Save as draft[0m
+[32m2025-11-27 19:33:59.427[0m | [1mINFO    [0m | [36mtools[0m:[36mallure_step_no[0m:[36m125[0m - [1mstep:expect_result:{'description': 'Draft post should be saved successfully', 'assertions': [{'assertion_type': 'element_visible_by_text', 'text': 'Post saved as draft!'}]}[0m
+[32m2025-11-27 19:33:59.481[0m | [1mINFO    [0m | [36mTest_Katana.conftest[0m:[36mpytest_runtest_makereport[0m:[36m56[0m - [1mTEST_STATUS: T1747 - passed[0m
+
+2025-11-27 19:34:00.095 | INFO     | __main__:start_autotest:61 - Calling test status update script: C:\Users\tester\autotest-monster\tools\update_test_status.py

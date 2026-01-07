@@ -1,0 +1,33 @@
+import re
+from playwright.sync_api import Playwright, sync_playwright, expect
+
+
+def run(playwright: Playwright) -> None:
+    browser = playwright.chromium.launch(headless=False)
+    context = browser.new_context()
+    page = context.new_page()
+    page.goto("https://ones.cn/identity/login")
+    page.get_by_role("textbox", name="* 邮箱").click()
+    page.get_by_role("textbox", name="* 邮箱").fill("yuxiao.zhu.ext@1m.app")
+    page.get_by_role("textbox", name="* 密码").click()
+    page.get_by_role("textbox", name="* 密码").fill("zyx@1032970941")
+    page.get_by_role("button", name="登录").click()
+    page.get_by_role("link", name="测试管理").click()
+    page.get_by_role("main").get_by_text("Nov 27 Smoke testing on prod env").click()
+    page.get_by_text("筛选").click()
+    page.locator(".ones-select-selection-overflow").click()
+    page.locator("#rc_select_6").fill("yuxiao")
+    page.get_by_text("YuXiao", exact=True).click()
+    page.locator("div").filter(has_text=re.compile(r"^筛选$")).click()
+    page.locator("div").filter(has_text=re.compile(r"^T1280$")).get_by_label("").check()
+    page.get_by_role("button", name="更改执行结果").click()
+    page.get_by_label("更改执行结果 (已选 1 个用例)").get_by_text("通过").click()
+    page.get_by_role("button", name="确定").click()
+
+    # ---------------------
+    context.close()
+    browser.close()
+
+
+with sync_playwright() as playwright:
+    run(playwright)

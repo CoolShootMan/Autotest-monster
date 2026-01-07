@@ -1,0 +1,27 @@
+import re
+from playwright.sync_api import Playwright, sync_playwright, expect
+
+
+def run(playwright: Playwright) -> None:
+    browser = playwright.chromium.launch(headless=False)
+    context = browser.new_context()
+    page = context.new_page()
+    page.goto("https://release.pear.us/yu-xiao")
+    page.get_by_role("paragraph").filter(has_text="Title product link").click()
+    page.locator("div").filter(has_text=re.compile(r"^Title product linkAdd new$")).get_by_role("button").first.click()
+    page.get_by_placeholder("As the bold title on your").fill("test auto product")
+    page.get_by_placeholder("Enter a price for sale").fill("88.8")
+    page.get_by_text("Upload", exact=True).click()
+    page.get_by_text("Upload", exact=True).set_input_files("26d6c99f695944268fba399cac0457b4_1.jpeg")
+    page.locator("button").filter(has_text=re.compile(r"^Add$")).click()
+    with page.expect_popup() as page1_info:
+        page.get_by_text("test auto product").click()
+    page1 = page1_info.value
+
+    # ---------------------
+    context.close()
+    browser.close()
+
+
+with sync_playwright() as playwright:
+    run(playwright)

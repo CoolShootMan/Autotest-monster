@@ -1,0 +1,30 @@
+2025-11-07 10:24:55.175 | INFO     | __main__:start_autotest:22 - 
+
+     _   _   _ _____ ___    _____ _____ ____ _____ 
+    / \ | | | |_   _/ _ \  |_   _| ____/ ___|_   _|
+   / _ \| | | | | || | | |   | | |  _| \___ \ | |  
+  / ___ \ |_| | | || |_| |   | | | |___ ___) || |  
+ /_/   \_\___/  |_| \___/    |_| |_____|____/ |_|  
+"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'./o--000'"`-0-0-'"
+
+      Starting      ...     ...     ...
+2025-11-07 10:24:55.175 | INFO     | __main__:start_autotest:39 - Allure data directory: C:\Users\tester\autotest-monster\allure-results\20251107_102455
+2025-11-07 10:24:58.990 | INFO     | tools:allure_title:101 - title:testT1993
+2025-11-07 10:24:58.991 | INFO     | tools:allure_step_no:125 - step:description:Verify the function of generating invitation link
+2025-11-07 10:24:58.991 | INFO     | tools:allure_step_no:125 - step:test_step:{'open': 'https://release.pear.us/demi-release', 'R_click1': {'role': 'button', 'name': 'Storefront'}, 'R_click2': {'role': 'link', 'name': 'Collabs'}, 'R_click3': {'role': 'button', 'name': 'Copy'}, 'R_click4': {'role': 'button', 'name': 'Manage'}, 'R_click5': {'role': 'button', 'name': 'CopyOutlineIcon', 'index': 1}}
+2025-11-07 10:24:58.991 | INFO     | page.home:page_open:85 - 打开-https://release.pear.us/demi-release
+2025-11-07 10:25:25.210 | INFO     | __main__:start_autotest:22 - 
+
+     _   _   _ _____ ___    _____ _____ ____ _____ 
+    / \ | | | |_   _/ _ \  |_   _| ____/ ___|_   _|
+   / _ \| | | | | || | | |   | | |  _| \___ \ | |  
+  / ___ \ |_| | | || |_| |   | | | |___ ___) || |  
+ /_/   \_\___/  |_| \___/    |_| |_____|____/ |_|  
+"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'./o--000'"`-0-0-'"
+
+      Starting      ...     ...     ...
+2025-11-07 10:25:25.210 | INFO     | __main__:start_autotest:39 - Allure data directory: C:\Users\tester\autotest-monster\allure-results\20251107_102525
+2025-11-07 10:25:26.501 | INFO     | tools:allure_title:101 - title:testT1993
+2025-11-07 10:25:26.501 | INFO     | tools:allure_step_no:125 - step:description:Verify the function of generating invitation link
+2025-11-07 10:25:26.501 | INFO     | tools:allure_step_no:125 - step:test_step:{'open': 'https://release.pear.us/demi-release', 'R_click1': {'role': 'button', 'name': 'Storefront'}, 'R_click2': {'role': 'link', 'name': 'Collabs'}, 'R_click3': {'role': 'button', 'name': 'Copy'}, 'R_click4': {'role': 'button', 'name': 'Manage'}, 'R_click5': {'role': 'button', 'name': 'CopyOutlineIcon', 'index': 1}}
+2025-11-07 10:25:26.501 | INFO     | page.home:page_open:85 - 打开-https://release.pear.us/demi-release

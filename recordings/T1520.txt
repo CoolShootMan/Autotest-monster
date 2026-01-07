@@ -1,0 +1,30 @@
+import re
+from playwright.sync_api import Playwright, sync_playwright, expect
+
+
+def run(playwright: Playwright) -> None:
+    browser = playwright.chromium.launch(headless=False)
+    context = browser.new_context()
+    page = context.new_page()
+    page.goto("https://release.pear.us/yu-xiao")
+    page.get_by_role("button", name="Explore").click()
+    page.get_by_role("link", name="avatar Demi-release's Store").click()
+    page.get_by_role("img", name="Logo").click()
+    page.get_by_role("button", name="Follow").click()
+    page.get_by_text("Thanks for following! Updates").click()
+    page.locator(".MuiButtonBase-root").first.click()
+    page.get_by_role("button", name="Keep following").click()
+    page.locator(".MuiButtonBase-root").first.click()
+    page.get_by_role("button", name="Unfollow Anyway").click()
+    page.get_by_text("Unfollowed. You'll no longer").click()
+    page.locator(".MuiButtonBase-root").first.click()
+    page.get_by_role("button", name="Follow").click()
+    page.get_by_text("Thanks for following! Updates").click()
+
+    # ---------------------
+    context.close()
+    browser.close()
+
+
+with sync_playwright() as playwright:
+    run(playwright)

@@ -1,0 +1,20 @@
+2025-11-21 17:12:53.499 | INFO     | __main__:start_autotest:22 - 
+
+     _   _   _ _____ ___    _____ _____ ____ _____ 
+    / \ | | | |_   _/ _ \  |_   _| ____/ ___|_   _|
+   / _ \| | | | | || | | |   | | |  _| \___ \ | |  
+  / ___ \ |_| | | || |_| |   | | | |___ ___) || |  
+ /_/   \_\___/  |_| \___/    |_| |_____|____/ |_|  
+"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'./o--000'"`-0-0-'"
+
+      Starting      ...     ...     ...
+2025-11-21 17:12:53.499 | INFO     | __main__:start_autotest:39 - Allure data directory: C:\Users\tester\autotest-monster\allure-results\20251121_171253
+2025-11-21 17:12:56.761 | INFO     | tools:allure_title:101 - title:testT3370
+2025-11-21 17:12:56.761 | INFO     | tools:allure_step_no:125 - step:description:Verify set the product card alignment at the store level
+2025-11-21 17:12:56.761 | INFO     | tools:allure_step_no:125 - step:test_step:{'open': 'https://release.pear.us/demi-release', 'goto_storefront_top_aligned': {'url': 'https://release.pear.us/storefront-modules#Storefront', 'timeout': 90000}, 'check_label_top_aligned': {'label': 'Top aligned', 'timeout': 60000}, 'publish_button_click_top_aligned': {}, 'verify_navigation_after_publish_top_aligned': {'url_regex': 'https://release.pear.us/demi-release', 'timeout': 70000, 'warning_message': 'Shop page redirect after publish timed out (stuck in loading). Directly navigating to Storefront.', 'fallback_url': 'https://release.pear.us/storefront-modules#Storefront', 'fallback_timeout': 90000}, 'click_mui_svg_icon_top_aligned': {}, 'click_products_text_top_aligned': {}, 'wait_for_product_cards_top_aligned': {'index': 1, 'timeout': 60000}, 'verify_top_aligned_layout': {'timeout': 60000, 'screenshot_path': 'recordings/top_aligned_failure.png', 'threshold': 5}, 'goto_storefront_waterfall': {'url': 'https://release.pear.us/storefront-modules#Storefront', 'timeout': 90000}, 'check_label_waterfall': {'label': 'Waterfall', 'timeout': 60000}, 'publish_button_click_waterfall': {}, 'verify_navigation_after_publish_waterfall': {'url_regex': 'https://release.pear.us/demi-release', 'timeout': 70000, 'warning_message': 'Shop page redirect after publish timed out (stuck in loading). Directly navigating to Storefront.', 'fallback_url': 'https://release.pear.us/storefront-modules#Storefront', 'fallback_timeout': 90000}, 'click_mui_svg_icon_waterfall': {}, 'click_products_text_waterfall': {}, 'wait_for_product_cards_waterfall': {'index': 1, 'timeout': 60000}, 'verify_waterfall_layout': {'url_regex': 'https://release.pear.us/demi-release', 'timeout': 70000, 'warning_message': 'Shop page redirect after publish timed out (stuck in loading). Directly navigating to Storefront.', 'fallback_url': 'https://release.pear.us/storefront-modules#Storefront', 'fallback_timeout': 90000, 'wait_for_timeout': 1500, 'wait_for_cards_timeout': 60000}}
+2025-11-21 17:12:56.761 | INFO     | page.home:page_open:85 - 打开-https://release.pear.us/demi-release
+2025-11-21 17:14:18.836 | INFO     | tools:allure_title:101 - title:testT3554
+2025-11-21 17:14:18.836 | INFO     | tools:allure_step_no:125 - step:description:Verify adding a new module in Customize shop-Modules
+2025-11-21 17:14:18.836 | INFO     | tools:allure_step_no:125 - step:test_step:{'open': 'https://release.pear.us/demi-release', 'R_click1': {'role': 'button', 'name': 'Customize'}, 'R_click2': {'role': 'tab', 'name': 'Modules'}, 'R_click3': {'role': 'button', 'name': 'Add new module'}, 'fill1': {'role': 'textbox', 'name': 'Enter title of the module', 'value': 'test new module'}, 'R_click4': {'role': 'button', 'name': 'Add'}, 'R_click5': {'role': 'button', 'name': 'Image of Product test date zasq9n'}, 'R_click6': {'role': 'button', 'name': 'Image of Product test 7801'}, 'R_click7': {'role': 'button', 'name': 'Add'}, 'R_click8': {'role': 'button', 'name': 'Publish'}}
+2025-11-21 17:14:18.836 | INFO     | page.home:page_open:85 - 打开-https://release.pear.us/demi-release
+2025-11-21 17:14:22.755 | INFO     | page.home:page_element_role_click:30 - 点击了元素-button,出现文本-Customize

@@ -1,0 +1,32 @@
+import re
+from playwright.sync_api import Playwright, sync_playwright, expect
+
+
+def run(playwright: Playwright) -> None:
+    browser = playwright.chromium.launch(headless=False)
+    context = browser.new_context()
+    page = context.new_page()
+    page.goto("https://release.pear.us/login")
+    page.get_by_text("Login with password").click()
+    page.get_by_text("+1Use Email").click()
+    page.get_by_role("button", name="Use Email").click()
+    page.get_by_role("textbox", name="Email").click()
+    page.get_by_role("textbox", name="Email").fill("yuxiao.zhu.ext+3@1m.app")
+    page.get_by_text("Welcome to Pear").click()
+    page.get_by_text("Discover and share products").click()
+    page.get_by_role("textbox", name="Input your password").click()
+    page.locator("form div").filter(has_text="Use PhoneLog in").locator("div").nth(3).click()
+    page.get_by_role("textbox", name="Input your password").fill("Happy123 ")
+    page.get_by_role("button", name="Log in").click()
+    page.get_by_role("button", name="toggle password visibility").click()
+    page.get_by_role("button", name="toggle password visibility").click()
+    page.get_by_role("button", name="Log in").click()
+    page.get_by_text("Invalid account or password").click()
+
+    # ---------------------
+    context.close()
+    browser.close()
+
+
+with sync_playwright() as playwright:
+    run(playwright)

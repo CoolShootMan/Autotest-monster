@@ -1,20 +1,21 @@
 testT3370:
     description: "Verify set the product card alignment at the store level"
     test_step:
-        open: "https://release.pear.us/yu-xiao"
-        # Step 2: Set Product card layout to Top aligned
+        open: "https://hui.staging.pear.us/santiycheck-curator-111"
+        swipe_avoid_plus: { x: 0, y: 300 }
+        sleep_init: 1000
         goto_storefront_top_aligned:
-            url: "https://release.pear.us/storefront-modules#Storefront"
+            url: "https://hui.staging.pear.us/storefront-modules#Storefront"
             timeout: 90000
         check_label_top_aligned:
             label: "Top aligned"
             timeout: 60000
         publish_button_click_top_aligned: {}
         verify_navigation_after_publish_top_aligned:
-            url_regex: "https://release.pear.us/yu-xiao"
+            url_regex: "https://hui.staging.pear.us/santiycheck-curator-111"
             timeout: 70000
             warning_message: "Shop page redirect after publish timed out. Directly navigating to Shop page."
-            fallback_url: "https://release.pear.us/yu-xiao"
+            fallback_url: "https://hui.staging.pear.us/santiycheck-curator-111"
             fallback_timeout: 90000
         click_mui_svg_icon_top_aligned: {}
         click_products_text_top_aligned: {}
@@ -25,19 +26,20 @@ testT3370:
             timeout: 60000
             screenshot_path: "recordings/top_aligned_failure.png"
             threshold: 5
-        # Step 4: Set Product card layout to Waterfall
+        screenshot_final:
+            name: "demi_release_page.png"
         goto_storefront_waterfall:
-            url: "https://release.pear.us/storefront-modules#Storefront"
+            url: "https://hui.staging.pear.us/storefront-modules#Storefront"
             timeout: 90000
         check_label_waterfall:
             label: "Waterfall"
             timeout: 60000
         publish_button_click_waterfall: {}
         verify_navigation_after_publish_waterfall:
-            url_regex: "https://release.pear.us/yu-xiao"
+            url_regex: "https://hui.staging.pear.us/santiycheck-curator-111"
             timeout: 70000
             warning_message: "Shop page redirect after publish timed out. Directly navigating to Shop page."
-            fallback_url: "https://release.pear.us/yu-xiao"
+            fallback_url: "https://hui.staging.pear.us/santiycheck-curator-111"
             fallback_timeout: 90000
         click_mui_svg_icon_waterfall: {}
         click_products_text_waterfall: {}
@@ -45,10 +47,10 @@ testT3370:
             index: 1
             timeout: 60000
         verify_waterfall_layout:
-            url_regex: "https://release.pear.us/yu-xiao"
+            url_regex: "https://hui.staging.pear.us/santiycheck-curator-111"
             timeout: 70000
             warning_message: "Shop page redirect after publish timed out. Directly navigating to Shop page."
-            fallback_url: "https://release.pear.us/yu-xiao"
+            fallback_url: "https://hui.staging.pear.us/santiycheck-curator-111"
             fallback_timeout: 90000
             wait_for_timeout: 1500
             wait_for_cards_timeout: 60000
@@ -59,16 +61,21 @@ testT3370:
 testT3554:
     description: "Verify adding a new module in shop page"
     test_step:
-        open: "https://release.pear.us/yu-xiao"
+        open: "https://hui.staging.pear.us/santiycheck-curator-111"
+        swipe_avoid_plus: { x: 0, y: 300 }
         sleep_after_open: 5000
         R_click3: { role: 'button', name: 'Module' }
         fill1: { role: 'textbox', name: 'Enter title of the module', value: 'test new module' }
+        R_click_continue: { role: 'button', name: 'Continue' }
+        sleep_before_add: 2000
         R_click4: { role: 'button', name: 'Add' }
         sleep_wait_product: 5000
         R_click5: { role: 'button', index: 1 }
         sleep_wait_confirm: 2000
         R_click7: { role: 'button', name: 'Add', index: -1 }
         sleep_after_publish: 5000
+        open_back: "https://hui.staging.pear.us/santiycheck-curator-111"
+        sleep_before_verify: 2000
     expect_result:
         description: "Verify that the new module is visible on the page"
         assertions:
@@ -78,20 +85,24 @@ testT3554:
 testT4264:
     description: "Verify that the user adds the link card of 'Image' on the shop page(navigation bar) and module menu"
     test_step:
-        open: "https://release.pear.us/yu-xiao"
+        open: "https://hui.staging.pear.us/santiycheck-curator-111"
+        swipe_avoid_plus: { x: 0, y: 300 }
         sleep_after_open: 5000
         R_click3: { role: 'button', name: 'Module' }
-        check1: { role: 'radio', name: 'Links (select a type below)' }
-        l_click_regex1: { text: 'Image$', index: 1 }
+        R_click_continue: { role: 'button', name: 'Continue' }
+        check1: { label: 'Links (select a type below)' }
+        l_click_regex1: { text: '^Image$', index: 0 }
         check2: { role: 'radio', name: 'Carousel Carousel' }
-        sleep2: 5000
+        sleep_before_add: 2000
         R_click4: { role: 'button', name: 'Add' }
+        sleep_after_add: 1500
         R_click5: { role: 'button', name: 'Add new', index: -1 }
         fill_by_placeholder_and_locator1: { placeholder: 'https://example.com', locator: 'input[name="url"]', value: 'www.baidu.com' }
-        fill2: { placeholder: 'As the bold title on your', value: 'test aotu image' }
-        upload1: { text: 'Upload', file_path: 'C:\Users\tester\gemini-autotest\data\test image.jpg' }
+        fill2: { placeholder: 'As the bold title on your link card', value: 'test aotu image' }
+        upload1: { text: 'Upload', file_path: 'D:/new test/Autotest-moster/data/test imag.jpeg' }
         wait_for_upload_and_ui_update1: { timeout: 2000 }
-        R_click4: { role: 'button', name: 'Add' }
+        sleep_before_add_2: 2000
+        click_add_button_regex_final: {}
         sleep_after_close: 3000
     expect_result:
         description: "Verify that the new image link card is visible on the page"
@@ -102,10 +113,8 @@ testT4264:
 testT1993:
     description: "Verify the function of generating invitation link"
     test_step:
-        open: "https://release.pear.us/collabs"
-        click_copy_button: {}
-        click_manage_button: {}
-        click_copy_outline_icon: {}
+        open: "https://hui.staging.pear.us/collabs"
+        verify_invitation_link_clipboard: {}
     expect_result:
         description: "An invite link should be generated with the option to copy or share"
         assertions:
@@ -115,7 +124,7 @@ testT1993:
 testT855:
     description: "Verify the Share button functionality"
     test_step:
-        open: "https://release.pear.us/yu-xiao"
+        open: "https://hui.staging.pear.us/santiycheck-curator-111"
         sleep_after_open: 3000
         R_click_share: { role: 'button', name: 'Share' }
         sleep_after_click: 2000
@@ -125,11 +134,10 @@ testT855:
           - assertion_type: "element_visible_by_text"
             text: "Shop link copied — ready to"
 
-
 testT1747:
     description: "Verify creating a draft post"
     test_step:
-        open: "https://release.pear.us/yu-xiao"
+        open: "https://hui.staging.pear.us/santiycheck-curator-111"
         sleep_after_open: 3000
         R_click_plus_button: { role: 'button', name: '0', exact: True }
         sleep_after_plus: 2000
@@ -154,7 +162,8 @@ testT4279:
     guest: true
     description: "Verify submitting the contact form"
     test_step:
-        open: "https://release.pear.us/yu-xiao"
+        open: "https://hui.staging.pear.us/santiycheck-curator-111"
+        swipe_avoid_plus: { x: 0, y: 300 }
         sleep_after_open: 2500
         click_modal_close: {}
         sleep_after_close_popup: 1500
@@ -166,7 +175,7 @@ testT4279:
             value: "test auto send"
         fill_message:
             name: "Message"
-            value: "test auto test auto test auto test auto test auto test auto test auto test auto test auto test auto test auto test auto "
+            value: "test auto test auto test auto test auto test auto test auto test auto test auto test auto test auto test auto test auto"
         fill_email:
             role: "textbox"
             name: "Enter your email address"
@@ -178,7 +187,7 @@ testT4279:
         R_click_submit:
             role: "button"
             name: "Submit"
-        sleep_after_submit: 2000
+        sleep_after_submit: 5000
     expect_result:
         description: "Form should be submitted successfully"
         assertions:
@@ -188,7 +197,7 @@ testT4279:
 testT1520:
     description: "Verify follow and unfollow store functionality"
     test_step:
-        open: "https://release.pear.us/yu-xiao"
+        open: "https://hui.staging.pear.us/santiycheck-curator-111"
         sleep_after_open: 3000
         wait_for_page_load: { state: 'load' }
         R_click_explore: { role: 'button', name: 'Explore' }
@@ -201,10 +210,14 @@ testT1520:
         sleep_after_follow: 2000
         verify_follow_message: { text: 'Thanks for following! Updates' }
         click_close_toast_1: {}
+        R_click_logo_reopen_1: { role: 'img', name: 'Logo' }
+        sleep_reopen_1: 2000
         R_click_following_btn: { role: 'button', name: 'Following', exact: True }
         sleep_after_following: 1000
         R_click_unfollow_trigger: { role: 'button', name: 'Keep following' }
         sleep_before_unfollow: 1000
+        R_click_logo_reopen_2: { role: 'img', name: 'Logo' }
+        sleep_reopen_2: 2000
         R_click_following_btn_2: { role: 'button', name: 'Following', exact: True }
         sleep_before_unfollow_confirm: 1000
         click_close_toast_2: {}
@@ -213,28 +226,62 @@ testT1520:
         verify_unfollow_message: { text: "Unfollowed. You'll no longer" }
         click_close_toast_3: {}
         sleep_before_refollow: 3000
-        R_click_logo_again: { role: 'img', name: 'Logo' }
-        sleep_after_logo_refollow: 1000
+        click_bell_button: {}
+        sleep_after_bell_refollow: 2000
         R_click_follow_again: { role: 'button', name: 'Follow', exact: True }
         sleep_after_refollow: 2000
         verify_refollow_message: { text: 'Thanks for following! Updates' }
+        click_close_toast_refollow: {}
+        sleep_before_unfollow_final: 1000
+        click_bell_button_reopen: {}
+        sleep_reopen_3: 2000
+        sleep_before_unfollow_confirm_final: 1000
+        click_close_toast_4: {}
+        R_click_unfollow_confirm_final: { role: 'button', name: 'Unfollow Anyway' }
+        sleep_after_unfollow_final: 2000
+        verify_unfollow_message_final: { text: "Unfollowed. You'll no longer" }
     expect_result:
         description: "Follow and unfollow functionality should work correctly with proper toast messages"
         assertions:
           - assertion_type: "element_visible_by_text"
-            text: "Thanks for following! Updates"
+            text: "Unfollowed. You'll no longer"
+
+testT4306:
+    description: "Verify viewing user form submissions"
+    test_step:
+        open: "https://hui.staging.pear.us/santiycheck-curator-111"
+        sleep_after_open: 5000
+        click_form_more_menu: { form_name: 'Auto test form' }
+        sleep_after_more_click: 2000
+        R_click_view_submissions: { role: 'link', name: 'View submissions' }
+        sleep_after_view: 4000
+        R_click_submission: { text: 'test auto send' }
+        sleep_after_select: 2000
+        verify_submission_details: { name: 'Submission details' }
+        verify_message_content: { text: "test auto test auto test auto test auto test auto test auto test auto test auto test auto test auto test auto test auto" }
+        verify_email_content: { text: "yuxiao.zhu.ext@1m.app" }
+        verify_phone_content: { text: '+13018427082' }
+        click_submission_details_back: {}
+        sleep_after_back: 1000
+    expect_result:
+        description: "Form submissions should be viewable and match T4279 data"
+        assertions:
+          - assertion_type: "element_visible_by_text"
+            text: "test auto send"
+          - assertion_type: "element_visible_by_text"
+            text: "yuxiao.zhu.ext@1m.app"
 
 testT3556:
     description: "Verify editing an existing module"
     test_step:
-        open: "https://release.pear.us/yu-xiao"
+        open: "https://hui.staging.pear.us/santiycheck-curator-111"
         sleep_after_open: 3000
-        click_module_edit_button: { module_name: 'test-form' }
+        click_module_edit_button: { module_name: 'test new module' }
         sleep_after_edit_click: 1500
         R_click_edit_module: { role: 'button', name: 'Edit module' }
         sleep_after_edit_module: 1000
-        fill_module_title: { role: 'textbox', name: 'Enter title of the module', value: 'test-form-auto' }
-        click_vertical_scroll: { text: 'Vertical Scroll' }
+        fill_module_title: { role: 'textbox', name: 'Enter title of the module', value: 'test updated module' }
+        R_click_vertical_scroll: { text: 'Vertical Scroll', index: 0 }
         sleep_before_save: 1000
         R_click_save: { role: 'button', name: 'Save' }
         sleep_after_save: 3000
@@ -242,65 +289,56 @@ testT3556:
         description: "Module should be edited successfully"
         assertions:
           - assertion_type: "element_visible_by_text"
-            text: "test-form-auto"
+            text: "test updated module"
 
 testT3842:
     description: "Verify adding a new product to an existing module"
     test_step:
-        open: "https://release.pear.us/yu-xiao"
+        open: "https://hui.staging.pear.us/santiycheck-curator-111"
+        swipe_avoid_plus: { x: 0, y: 300 }
         sleep_after_open: 3000
-        click_module_paragraph: { text: 'Title product link' }
-        sleep_after_paragraph: 1500
-        click_add_new_product: { module_name: 'Title product link' }
-        sleep_after_add_new: 1500
-        fill_product_title: { placeholder: 'As the bold title on your', value: 'test auto product' }
-        fill_product_price: { placeholder: 'Enter a price for sale', value: '88.8' }
-        upload_product_image: { text: 'Upload', file_path: 'C:\Users\tester\autotest-monster\data\26d6c99f695944268fba399cac0457b4_1.jpeg' }
-        sleep_after_upload: 2000
+        R_click3: { role: 'button', name: 'Module' }
+        fill_module_title: { role: 'textbox', name: 'Enter title of the module', value: 'test product link' }
+        R_click_continue: { role: 'button', name: 'Continue' }
+        check1: { label: 'Links (select a type below)' }
+        l_click_regex1: { text: '^Product$', index: 0 }
+        check2: { role: 'radio', name: 'Carousel Carousel' }
+        sleep_before_add: 2000
+        R_click4: { role: 'button', name: 'Add' }
+        sleep_after_add: 1500
+        R_click5_add_new: { role: 'button', name: 'Add new', index: -1 }
+        sleep_after_add_new: 5000
+        fill_product_url: { placeholder: 'https://example.com', value: 'www.baidu.com' }
+        fill_product_title: { placeholder: 'As the bold title on your', value: 'test prodcut link card' }
+        fill_product_price: { placeholder: 'Enter a price for sale', value: '20.99' }
+        upload_product_image: { text: 'Upload', file_path: 'D:/new test/Autotest-moster/data/test imag.jpeg' }
+        sleep_after_upload: 3000
+        sleep_before_final_add: 2000
         click_add_button_regex: {}
-        sleep_after_add: 3000
-        verify_product_clickable: { text: 'test auto product' }
+        sleep_after_final_add: 3000
+        verify_product_visible: { text: 'test prodcut link card' }
     expect_result:
         description: "Product should be added to the module successfully"
         assertions:
           - assertion_type: "element_visible_by_text"
-            text: "test auto product"
+            text: "test prodcut link card"
 
 testT2129:
-    description: "Verify creating a post from a product card"
+    description: "Verify saving a post as draft via More action"
     test_step:
-        open: "https://release.pear.us/yu-xiao"
+        open: "https://hui.staging.pear.us/santiycheck-curator-111"
         sleep_after_open: 3000
-        click_products_nav_icon: {}
-        sleep_after_nav_icon: 1500
-        click_products_tab_t2129: {}
-        sleep_after_products_tab: 2000
-        click_product_plus_button: {}
-        sleep_after_plus: 1500
-        R_click_create_post: { role: 'button', name: 'Create a Post' }
-        sleep_after_create: 2000
-        R_click_content_tab_t2129: { role: 'tab', name: 'Content' }
-        sleep_after_content_tab: 1000
-        fill_post_title_t2129: { role: 'textbox', name: 'Pick a bold title for your', value: 'test T2129' }
-        R_click_add_cover: { role: 'button', name: 'Add cover media' }
-        sleep_after_cover_click: 1000
-        R_click_product_media: { role: 'button', name: 'Product media' }
-        sleep_after_product_media: 1500
-        click_product_image: {}
-        sleep_after_image_select: 1000
-        R_click_add_media: { role: 'button', name: 'Add 1/20 media' }
-        sleep_after_add_media: 1000
-        R_click_done: { role: 'button', name: 'Done' }
-        sleep_after_done: 1500
-        R_click_publish_1: { role: 'button', name: 'Publish' }
-        sleep_before_confirm: 1000
-        R_click_publish_2: { role: 'button', name: 'Publish' }
-        sleep_after_publish: 3000
-        R_click_posts_tab: { role: 'tab', name: 'Posts' }
-        sleep_after_posts_tab: 2000
-        verify_post_exists: {}
+        R_click_more_action: { role: 'button', name: 'More action' }
+        sleep_after_more: 1500
+        R_click_list_item: { role: 'listitem', index: 0 }
+        sleep_after_list: 4000
+        R_click_save_draft: { role: 'button', name: 'Save as draft' }
+        sleep_after_save: 2000
+        verify_message_content: { text: 'Post saved as draft!' }
+        click_text: { text: 'Got it' }
+        sleep_after_got: 1500
     expect_result:
-        description: "Post should be created successfully and appear in Posts tab"
+        description: "Post should be saved as draft successfully"
         assertions:
           - assertion_type: "element_visible_by_text"
-            text: "test T2129"
+            text: "Post saved as draft!"

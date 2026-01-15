@@ -4,20 +4,23 @@ from playwright.sync_api import Playwright, sync_playwright, expect
 
 def run(playwright: Playwright) -> None:
     browser = playwright.chromium.launch(headless=False)
-    context = browser.new_context()
+    context = browser.new_context(storage_state="D:\\new test\\Autotest-moster\\test_case\\UI\\Test_Katana\\staging_cookie.json")
     page = context.new_page()
-    page.goto("https://release.pear.us/yu-xiao")
-    page.get_by_role("paragraph").filter(has_text="Title product link").click()
-    page.locator("div").filter(has_text=re.compile(r"^Title product linkAdd new$")).get_by_role("button").first.click()
-    page.get_by_placeholder("As the bold title on your").fill("test auto product")
-    page.get_by_placeholder("Enter a price for sale").fill("88.8")
-    page.get_by_text("Upload", exact=True).click()
-    page.get_by_text("Upload", exact=True).set_input_files("26d6c99f695944268fba399cac0457b4_1.jpeg")
+    page.goto("https://hui.staging.pear.us/santiycheck-curator-111")
+    page.get_by_role("button", name="Module").click()
+    page.get_by_role("textbox", name="Enter title of the module").fill("test product link")
+    page.get_by_role("button", name="Continue").click()
+    page.get_by_role("radio", name="Links (select a type below)").check()
+    page.locator("label").filter(has_text="Links (select a type below)").click()
+    page.locator("div").filter(has_text=re.compile(r"^Product$")).click()
+    page.get_by_role("button", name="Add").click()
+    page.get_by_role("button", name="Add new").nth(1).click()
+    page.get_by_placeholder("https://example.com").click()
+    page.locator("input[name=\"url\"]").fill("www.baidu.com")
+    page.get_by_placeholder("As the bold title on your").fill("test prodcut link card")
+    page.get_by_placeholder("Enter a price for sale").fill("20.99")
+    page.get_by_text("Upload", exact=True).set_input_files("test imag.jpeg")
     page.locator("button").filter(has_text=re.compile(r"^Add$")).click()
-    with page.expect_popup() as page1_info:
-        page.get_by_text("test auto product").click()
-    page1 = page1_info.value
-
     # ---------------------
     context.close()
     browser.close()

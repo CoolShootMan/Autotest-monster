@@ -19,7 +19,7 @@ def run(playwright: Playwright) -> None:
     page.wait_for_url(lambda url: "/login" not in url, timeout=60000)
 
     # Now that login is complete, save the storage state.
-    cookies = context.storage_state(path="C:\\Users\\tester\\autotest-monster\\test_case\\UI\\Test_Katana\\cookie_release.json")
+    cookies = context.storage_state(path="D:\\new test\\Autotest-moster\\test_case\\UI\\Test_Katana\\cookie_release.json")
     print(cookies)
     page.close()
 

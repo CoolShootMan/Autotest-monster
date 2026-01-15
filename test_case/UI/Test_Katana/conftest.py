@@ -9,6 +9,10 @@ Version          : 2.0
 '''
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+# Ensure BASE_DIR is absolute and correct if it was failing
+if not os.path.exists(os.path.join(BASE_DIR, "test_case")):
+    # Fallback to a safer calculation if 4 levels isn't right for some reason
+    BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../.."))
 import shutil
 from loguru import logger
 import warnings
@@ -61,7 +65,7 @@ def pytest_runtest_makereport(item, call):
 
 
 def pytest_addoption(parser):
-    parser.addoption("--storage-state", action="store", default=None, help="Path to the storage state file")
+    parser.addoption("--env", action="store", default="release", help="Test environment: release, staging, or local")
 
 @pytest.fixture(scope="session")
 def browser_context_args(browser_context_args, playwright):
@@ -158,37 +162,46 @@ def context(
                 # Silent catch empty videos.
                 pass
 
-    video_option = pytestconfig.getoption("--video")
-    preserve_video = video_option == "on" or (
-        failed and video_option == "retain-on-failure"
-    )
-    if preserve_video:
-        for page in pages:
-            human_readable_status = "failed" if failed else "finished"
-            video = page.video
-            if not video:
-                continue
-            try:
-                video_path = video.path()
-                file_name = f"{slugify(request.node.nodeid)}.webm"
-                video.save_as(path=_build_artifact_test_folder(pytestconfig, request, file_name))
-                allure.attach.file(_build_artifact_test_folder(pytestconfig, request, file_name), name=request.node.name, attachment_type=allure.attachment_type.WEBM)
+@pytest.fixture(scope="session")
+def smokecases1_data(pytestconfig):
+    env = pytestconfig.getoption("--env")
+    if env == "release":
+        filename = "Katana_curator_smoke.yaml"
+    else:
+        filename = f"Katana_curator_smoke_{env}.yaml"
+    
+    test_case_path = os.path.join(BASE_DIR, "test_case", "UI", "Test_Katana", filename)
+    logger.info(f"Loading test cases from: {test_case_path}")
+    
+    if not os.path.exists(test_case_path):
+        logger.error(f"Configuration file not found: {test_case_path}")
+        pytest.fail(f"Config file {filename} not found for environment '{env}'")
 
-            except Error:
-                # Silent catch empty videos.
-                pass
+    with open(test_case_path, "r", encoding="utf-8") as file:
+        return yaml.safe_load(file.read())
 
-test_case_path = os.path.join(BASE_DIR,"test_case","UI", "Test_Katana", "Katana_curator_smoke.yaml")
-with open(test_case_path, "r", encoding="utf-8") as file:
-    l = []
-    d = {}
-    test_case_raw_data = yaml.safe_load(file.read())
-    ids = []
-    for k,v in test_case_raw_data.items():
-        l.append({k:v})
-        ids.append(k)
+def pytest_generate_tests(metafunc):
+    if "smokecases1" in metafunc.fixturenames:
+        # Load data once per session via a helper or direct read
+        # Note: We can't use fixtures easily inside hook-like generators without request
+        # So we read the config during generation
+        env = metafunc.config.getoption("--env")
+        if env == "release":
+            filename = "Katana_curator_smoke.yaml"
+        else:
+            filename = f"Katana_curator_smoke_{env}.yaml"
+        
+        path = os.path.join(BASE_DIR, "test_case", "UI", "Test_Katana", filename)
+        if os.path.exists(path):
+            with open(path, "r", encoding="utf-8") as f:
+                raw_data = yaml.safe_load(f)
+                cases = [{k: v} for k, v in raw_data.items()]
+                ids = [k for k in raw_data.keys()]
+                metafunc.parametrize("smokecases1", cases, ids=ids)
+        else:
+            metafunc.parametrize("smokecases1", [])
 
-@pytest.fixture(params=l, ids=ids)
+@pytest.fixture()
 def smokecases1(request):
-    """ 参数化测试用例 """
+    """ Parameterized test case (kept for compatibility with existing tests) """
     return request.param

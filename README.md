@@ -33,20 +33,29 @@
 ├─test-result       # 测试录屏与截屏结果输出路径
 ├─test_case
 |  └─UI
-|    ├─conftest.py  # UI测试初始化
-|    ├─test_case.yaml # UI测试案例，编写方法见文件说明
-│    └─test_ui.py	  # 测试方法
+|    ├─Test_Katana
+|    |  ├─actions       # [NEW] 动作注册表 (Action Registry)
+|    |  |  ├─__init__.py # 注册表入口
+|    |  |  ├─base.py     # 基础动作 (open, click, fill)
+|    |  |  ├─module.py   # 模块相关动作
+|    |  |  ├─product.py  # 产品相关动作
+|    |  |  ├─form.py     # 表单相关动作
+|    |  |  └─layout.py   # 布局验证动作
+|    |  ├─conftest.py   # UI测试初始化 (多环境支持)
+|    |  ├─test_ui.py    # [Refactored] 核心测试执行引擎 (分发器)
+|    |  ├─Katana_curator_smoke_staging.yaml # 预发环境用例
+|    |  └─Katana_curator_smoke.yaml         # 发布环境用例
 |
 ├─tools		            # 工具包
 │  ├─__init__.py		  # 常用方法封装
 │  ├─data_process.py	# 依赖数据处理
-|  ├─sql_operate.py   # 数据库操作
-|  ├─email_send.py    # 邮件发送
-|  ├─encode.py        # 接口加解密
-|  ├─generate_data.py # 测试数据生成
-|  ├─read_file.py     # yaml文件获取封装
-|  └─get_cookie.py    # 获取登录用的cookie
-|  └─update_test_status.py    # 更新线上测试用例的状态
+│  ├─sql_operate.py   # 数据库操作
+│  ├─email_send.py    # 邮件发送
+│  ├─encode.py        # 接口加解密
+│  ├─generate_data.py # 测试数据生成
+│  ├─read_file.py     # yaml文件获取封装
+│  └─get_cookie.py    # 获取登录用的cookie
+│  └─update_test_status.py    # 更新线上测试用例的状态
 ├─requirements.txt		# 项目依赖库文件
 └─main.py	# 主启动文件
 ```
@@ -81,4 +90,22 @@ expect_result(期望结果) 编写样例 {  "descrption": "期望页面"#header 
 4. 查看报告和结果
 
 
+## V3.0 Action Registry 架构升级
 
+为了支持多人协作开发及提高代码维护性，我们在 `test_case/UI/Test_Katana/actions/` 下引入了动作注册表模式。
+
+### 核心变更
+1. **模块化动作**: 不再将所有逻辑堆积在 `test_ui.py` 中。业务逻辑被拆分到 `module.py`, `product.py`, `form.py` 等文件中。
+2. **动态分发**: `test_ui.py` 变为瘦客户端，仅负责读取 YAML 并通过 `get_action(key)` 动态调用对应的处理函数。
+3. **注册表**: `actions/__init__.py` 维护了关键字到函数的映射关系。
+
+### 如何新增测试步骤
+1. 在 `actions/` 目录下找到或创建合适的模块文件 (如 `new_feature.py`)。
+2. 编写对应的处理函数 `def my_new_action(page: Page, v: dict): ...`。
+3. 在 `actions/__init__.py` 中导入该函数，并在 `ACTIONS` 字典中注册：`"my_new_step_key": my_new_action`。
+4. 在 YAML 用例中使用该 Key: `my_new_step_key: { param: value }`。
+
+### 多环境支持
+通过命令行参数 `--env` 切换环境 (staging/release)，系统会自动加载对应的 YAML 配置文件。
+- Staging: `pytest --env staging ...` (加载 `_staging.yaml`)
+- Release: `pytest --env release ...` (加载默认或 `_release.yaml`)

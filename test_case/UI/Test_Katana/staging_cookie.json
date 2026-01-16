@@ -1,0 +1,152 @@
+{
+  "cookies": [
+    {
+      "name": "staging_katana_visitor_id",
+      "value": "075c2bac-3b90-4426-9bd4-ca0a977500d4",
+      "domain": ".staging.pear.us",
+      "path": "/",
+      "expires": 1768463532.137479,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga",
+      "value": "GA1.1.161986461.1768377141",
+      "domain": ".pear.us",
+      "path": "/",
+      "expires": 1802937174.374567,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "vercel-experiment-uuid",
+      "value": "KRgmV1lMSudzs0KGlqoiL",
+      "domain": "vercel.live",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None",
+      "partitionKey": "https://pear.us",
+      "_crHasCrossSiteAncestor": true
+    },
+    {
+      "name": "staging_katana_web_auth_token",
+      "value": "K4ZwpgTgkgJgXAdiQgRigjAYwLQDZcCsC2ALAAy4CG2lax6ATAMxgkEwOVkwwA0YAOwBucEABdKAcwCWAyb1CQASgHsANmDgAhAKoBlKADkAonr0B9AAoBBJQBUTSheAh2AngAdNeu9cMARW39+AFtKaTU4N2AAD2lKFQA6AC8AC2BEsBixAGomAAF0EMTKDw9eeLE4dARcAA4mJHRCfhiPatq6klwmAkIgA.ogNq76EcKjmiuKi9-1-wBoNiKRTAM1h5eRuYykhGEZM",
+      "domain": ".staging.pear.us",
+      "path": "/",
+      "expires": 1768463565,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "staging_katana_web_auth_token_refresh",
+      "value": "K4ZwpgTgkgJgXAdiQgRigjAYwLQDZcCsC2ALAAy4CG2lax6ATAMxgkEwOVkwwA0YAOwBucEABdKAcwCWAyb2mUxcdAlwAOJknSF+ADwAOKhAE4zTEmoJA.30uyNvhsDsIqTzwSe0kIsLnqsrBXyb29lf3_gPwE7Ps",
+      "domain": ".staging.pear.us",
+      "path": "/",
+      "expires": 1799934765,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "staging_katana_vanity_url",
+      "value": "/santiycheck-curator-111",
+      "domain": ".staging.pear.us",
+      "path": "/",
+      "expires": 1799913168,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_rdt_uuid",
+      "value": "1768377141796.286a68d6-d28a-40ea-9f3b-fa04f3900ad7",
+      "domain": ".pear.us",
+      "path": "/",
+      "expires": 1776153174,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "_fbp",
+      "value": "fb.1.1768377175466.704497125218397466",
+      "domain": ".pear.us",
+      "path": "/",
+      "expires": 1776153175,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_RV17GL444M",
+      "value": "GS2.1.s1768377141$o1$g1$t1768377229$j60$l0$h0",
+      "domain": ".pear.us",
+      "path": "/",
+      "expires": 1802937229.229896,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://hui.staging.pear.us",
+      "localStorage": [
+        {
+          "name": "eruda-entry-button",
+          "value": "{\"rememberPos\":true,\"pos\":{\"x\":1230,\"y\":670}}"
+        },
+        {
+          "name": "eruda-dev-tools",
+          "value": "{\"transparency\":1,\"displaySize\":80,\"theme\":\"System preference\"}"
+        },
+        {
+          "name": "lastExternalReferrerTime",
+          "value": "1768377146892"
+        },
+        {
+          "name": "eruda-console",
+          "value": "{\"asyncRender\":true,\"catchGlobalErr\":true,\"jsExecution\":true,\"overrideConsole\":true,\"displayExtraInfo\":false,\"displayUnenumerable\":true,\"displayGetterVal\":true,\"lazyEvaluation\":true,\"displayIfErr\":false,\"maxLogNum\":\"infinite\"}"
+        },
+        {
+          "name": "eruda-resources",
+          "value": "{\"hideErudaSetting\":true,\"observeElement\":true}"
+        },
+        {
+          "name": "eruda-elements",
+          "value": "{\"overrideEventTarget\":true}"
+        },
+        {
+          "name": "topicsLastReferenceTime",
+          "value": "1768377175472"
+        },
+        {
+          "name": "eruda-sources",
+          "value": "{\"showLineNum\":true}"
+        },
+        {
+          "name": "lastExternalReferrer",
+          "value": "empty"
+        }
+      ]
+    },
+    {
+      "origin": "https://vercel.live",
+      "localStorage": [
+        {
+          "name": "vercel-toolbar-experiment-uuid-https://hui.staging.pear.us",
+          "value": "\"KRgmV1lMSudzs0KGlqoiL\""
+        },
+        {
+          "name": "vid-https://hui.staging.pear.us",
+          "value": "\"17683771433970.9892279020072137\""
+        }
+      ]
+    }
+  ]
+}

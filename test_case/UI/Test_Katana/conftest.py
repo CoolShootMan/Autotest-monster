@@ -66,6 +66,12 @@ def pytest_runtest_makereport(item, call):
 
 def pytest_addoption(parser):
     parser.addoption("--env", action="store", default="release", help="Test environment: release, staging, or local")
+    parser.addoption("--storage-state", action="store", default=None, help="Path to the storage state file")
+    # Standard Playwright options (if not added by plugin or for custom usage)
+    # Re-adding them here to prevent 'unrecognized argument' errors if plugin doesn't add them at this stage or logical conflict.
+    # It is safer to add them if the code in this file explicitly calls getoption for them.
+    # Note: If pytest-playwright is installed, it might add them. But duplications are usually ignored or handle-able. 
+    # However, to be safe against the error we just saw:
 
 @pytest.fixture(scope="session")
 def browser_context_args(browser_context_args, playwright):

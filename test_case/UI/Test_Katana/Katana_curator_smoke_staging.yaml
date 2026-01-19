@@ -135,7 +135,7 @@ testT855:
             text: "Shop link copied — ready to"
 
 testT1747:
-    description: "Verify creating a draft post"
+    description: "Verify whether clicking the 'Save as draft' button in the lower left corner of the Create Post page can save it as a draft Post"
     test_step:
         open: "https://hui.staging.pear.us/santiycheck-curator-111"
         sleep_after_open: 3000
@@ -152,6 +152,8 @@ testT1747:
         fill_subtitle: { role: 'textbox', name: 'Enter a subtitle to enrich', value: '123' }
         R_click_save_draft: { role: 'button', name: 'Save as draft' }
         sleep_after_save: 3000
+        R_click_got_it: { role: 'button', name: 'Got it' }
+        sleep_after_got_it: 2000
     expect_result:
         description: "Draft post should be saved successfully"
         assertions:
@@ -169,12 +171,12 @@ testT4279:
         sleep_after_close_popup: 1500
         click_contact_form:
             text: "Auto test form"
-        sleep_after_click_form: 1500
+        sleep_after_click_form: 3000
         fill_note:
-            name: "Note"
+            locator: 'input[placeholder="Please fill this out"]'
             value: "test auto send"
         fill_message:
-            name: "Message"
+            locator: 'textarea[placeholder="Please fill this out"]'
             value: "test auto test auto test auto test auto test auto test auto test auto test auto test auto test auto test auto test auto"
         fill_email:
             role: "textbox"
@@ -184,6 +186,29 @@ testT4279:
             role: "textbox"
             name: "Phone number"
             value: "+13018427082"
+        R_click_start_date:
+            role: "button"
+        sleep_after_start_date: 2000
+        R_click_start_date:
+            role: "gridcell"
+            name: "16"
+        sleep_after_start_date: 2000
+        R_click_start_date_ok:
+            role: "button"
+            name: "OK"
+        sleep_after_start_date_ok: 2000
+        R_click_end_date:
+            role: "textbox"
+            name: "MM/DD/YYYY hh:mm"
+        sleep_after_end_date: 2000
+        R_click_end_date:
+            role: "gridcell"
+            name: "17"
+        sleep_after_end_date: 2000
+        R_click_end_date_ok:
+            role: "button"
+            name: "OK"
+        sleep_after_end_date_ok: 2000
         R_click_submit:
             role: "button"
             name: "Submit"
@@ -324,19 +349,20 @@ testT3842:
             text: "test prodcut link card"
 
 testT2129:
-    description: "Verify saving a post as draft via More action"
+    description: "Verify the Product card can create post success on my shop page"
     test_step:
         open: "https://hui.staging.pear.us/santiycheck-curator-111"
         sleep_after_open: 3000
         R_click_more_action: { role: 'button', name: 'More action' }
         sleep_after_more: 1500
-        R_click_list_item: { role: 'listitem', index: 0 }
-        sleep_after_list: 4000
+        R_click_listitem: { role: 'listitem' }
+        sleep_after_listitem: 4500
         R_click_save_draft: { role: 'button', name: 'Save as draft' }
-        sleep_after_save: 2000
-        verify_message_content: { text: 'Post saved as draft!' }
-        click_text: { text: 'Got it' }
-        sleep_after_got: 1500
+        sleep_after_save: 500
+        R_click_got_it: { role: 'button', name: 'Got it' }
+        sleep_after_got: 1000
+        R_click_view_shop: { role: 'button', name: 'View in My Shop' }
+        sleep_after_view: 1500
     expect_result:
         description: "Post should be saved as draft successfully"
         assertions:

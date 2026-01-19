@@ -11,7 +11,7 @@ def run(playwright: Playwright) -> None:
     page.get_by_role("listitem").click()
     page.get_by_role("button", name="Save as draft").click()
     page.get_by_role("button", name="Got it").click()
-    page.get_by_text("Post saved as draft!").click()
+    page.get_by_role("button", name="View in My Shop").click()
 
     # ---------------------
     context.close()

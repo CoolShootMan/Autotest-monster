@@ -336,12 +336,14 @@ testT2129:
         R_click_more_action: { role: 'button', name: 'More action' }
         sleep_after_more: 1500
         R_click_list_item: { role: 'listitem', index: 0 }
-        sleep_after_list: 4000
+        sleep_after_list: 3000
         R_click_save_draft: { role: 'button', name: 'Save as draft' }
-        sleep_after_save: 2000
+        sleep_after_save: 5000
         verify_message_content: { text: 'Post saved as draft!' }
         click_text: { text: 'Got it' }
-        sleep_after_got: 1500
+        sleep_after_got: 3000
+        R_click_view_shop: { role: 'button', name: 'View in My Shop' }
+        sleep_after_view: 1500
     expect_result:
         description: "Post should be saved as draft successfully"
         assertions:

@@ -79,6 +79,7 @@ def smart_fill(page: Page, v: dict):
                 page.locator(f"input[placeholder*='{target_name}'], textarea[placeholder*='{target_name}']")
             ]
             target_id = v.get("index", 0)
+            filled = False
             for c in candidates:
                 target_el = c.nth(target_id)
                 if target_el.is_visible():

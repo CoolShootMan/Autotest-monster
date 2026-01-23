@@ -90,7 +90,7 @@ testT4264:
         sleep_after_open: 5000
         R_click3: { role: 'button', name: 'Module' }
         R_click_continue: { role: 'button', name: 'Continue' }
-        check1: { label: 'Links (select a type below)' }
+        check1: { label: 'Links (select a type below)', role: 'radio' }
         l_click_regex1: { text: '^Image$', index: 0 }
         check2: { role: 'radio', name: 'Carousel Carousel' }
         sleep_before_add: 2000
@@ -99,7 +99,7 @@ testT4264:
         R_click5: { role: 'button', name: 'Add new', index: -1 }
         fill_by_placeholder_and_locator1: { placeholder: 'https://example.com', locator: 'input[name="url"]', value: 'www.baidu.com' }
         fill2: { placeholder: 'As the bold title on your link card', value: 'test aotu image' }
-        upload1: { text: 'Upload', file_path: 'D:/new test/Autotest-moster/data/test imag.jpeg' }
+        upload1: { text: 'Upload', file_path: 'data/test imag.jpeg' }
         wait_for_upload_and_ui_update1: { timeout: 2000 }
         sleep_before_add_2: 2000
         click_add_button_regex_final: {}
@@ -300,7 +300,7 @@ testT3842:
         R_click3: { role: 'button', name: 'Module' }
         fill_module_title: { role: 'textbox', name: 'Enter title of the module', value: 'test product link' }
         R_click_continue: { role: 'button', name: 'Continue' }
-        check1: { label: 'Links (select a type below)' }
+        check1: { label: 'Links (select a type below)', role: 'radio' }
         l_click_regex1: { text: '^Product$', index: 0 }
         check2: { role: 'radio', name: 'Carousel Carousel' }
         sleep_before_add: 2000
@@ -308,10 +308,10 @@ testT3842:
         sleep_after_add: 1500
         R_click5_add_new: { role: 'button', name: 'Add new', index: -1 }
         sleep_after_add_new: 5000
-        fill_product_url: { placeholder: 'https://example.com', value: 'www.baidu.com' }
+        fill_product_url: { placeholder: 'https://example.com', locator: 'input[name="url"]', value: 'www.baidu.com' }
         fill_product_title: { placeholder: 'As the bold title on your', value: 'test prodcut link card' }
-        fill_product_price: { placeholder: 'Enter a price for sale', value: '20.99' }
-        upload_product_image: { text: 'Upload', file_path: 'D:/new test/Autotest-moster/data/test imag.jpeg' }
+        fill_product_price: { locator: 'form input >> nth=2', value: '20.99' }
+        upload_product_image: { locator: 'input[type="file"]', file_path: 'data/test imag.jpeg' }
         sleep_after_upload: 3000
         sleep_before_final_add: 2000
         click_add_button_regex: {}

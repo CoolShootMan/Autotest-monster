@@ -30,6 +30,7 @@ from .layout import (
     goto_storefront, publish_button_click, verify_navigation_after_publish,
     click_mui_svg_icon, click_products_text, wait_for_product_cards
 )
+from .collabs import verify_invitation_link_clipboard
 
 # Registry for exact match keys
 ACTIONS = {
@@ -90,10 +91,10 @@ ACTIONS = {
     "click_mui_svg_icon_waterfall": click_mui_svg_icon,
     "click_products_text_top_aligned": click_products_text,
     "click_products_text_waterfall": click_products_text,
-    "wait_for_product_cards_top_aligned": wait_for_product_cards,
     "wait_for_product_cards_waterfall": wait_for_product_cards,
     "check_label_top_aligned": smart_check,
     "check_label_waterfall": smart_check,
+    "verify_invitation_link_clipboard": verify_invitation_link_clipboard,
 }
 
 def get_action(name):
@@ -107,7 +108,7 @@ def get_action(name):
         return ACTIONS[name]
     
     # 2. Prefix mapping
-    if name.startswith("R_click"):
+    if name.startswith("R_click") or name.startswith("click"):
         return smart_click
     elif name.startswith("fill"):
         return smart_fill

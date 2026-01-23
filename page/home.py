@@ -30,11 +30,11 @@ def page_element_role_click(page: Page, role, name, index=None, exact=False, for
         logger.info(f'点击了元素-{role},出现文本-{name}')
     if index is not None:
         locator = page.get_by_role(role=role, name=name, exact=exact).nth(index=index)
-        locator.scroll_into_view_if_needed()
+        # locator.scroll_into_view_if_needed()
         locator.click(force=force)
     else:
         locator = page.get_by_role(role=role, name=name, exact=exact).first
-        locator.scroll_into_view_if_needed()
+        # locator.scroll_into_view_if_needed()
         locator.click(force=force)
 
 def page_element_label_click(page: Page, text, index=0):

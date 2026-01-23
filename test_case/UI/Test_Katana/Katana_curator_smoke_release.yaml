@@ -1,61 +1,60 @@
+
 testT3370:
     description: "Verify set the product card alignment at the store level"
     test_step:
         open: "https://release.pear.us/yu-xiao"
         swipe_avoid_plus: { x: 0, y: 300 }
         sleep_init: 1000
-        # Step 2: Set Product card layout to Top aligned
         goto_storefront_top_aligned:
             url: "https://release.pear.us/storefront-modules#Storefront"
-            timeout: 90000
+            timeout: 9000
         check_label_top_aligned:
             label: "Top aligned"
-            timeout: 60000
+            timeout: 6000
         publish_button_click_top_aligned: {}
         verify_navigation_after_publish_top_aligned:
             url_regex: "https://release.pear.us/yu-xiao"
-            timeout: 70000
+            timeout: 30000
             warning_message: "Shop page redirect after publish timed out. Directly navigating to Shop page."
             fallback_url: "https://release.pear.us/yu-xiao"
-            fallback_timeout: 90000
+            fallback_timeout: 30000
         click_mui_svg_icon_top_aligned: {}
         click_products_text_top_aligned: {}
         wait_for_product_cards_top_aligned:
             index: 1
-            timeout: 60000
+            timeout: 6000
         verify_top_aligned_layout:
-            timeout: 60000
+            timeout: 6000
             screenshot_path: "recordings/top_aligned_failure.png"
             threshold: 5
         screenshot_final:
             name: "demi_release_page.png"
-        # Step 4: Set Product card layout to Waterfall
         goto_storefront_waterfall:
             url: "https://release.pear.us/storefront-modules#Storefront"
-            timeout: 90000
+            timeout: 9000
         check_label_waterfall:
             label: "Waterfall"
-            timeout: 60000
+            timeout: 6000
         publish_button_click_waterfall: {}
         verify_navigation_after_publish_waterfall:
             url_regex: "https://release.pear.us/yu-xiao"
-            timeout: 70000
+            timeout: 30000
             warning_message: "Shop page redirect after publish timed out. Directly navigating to Shop page."
             fallback_url: "https://release.pear.us/yu-xiao"
-            fallback_timeout: 90000
+            fallback_timeout: 30000
         click_mui_svg_icon_waterfall: {}
         click_products_text_waterfall: {}
         wait_for_product_cards_waterfall:
             index: 1
-            timeout: 60000
+            timeout: 6000
         verify_waterfall_layout:
             url_regex: "https://release.pear.us/yu-xiao"
-            timeout: 70000
+            timeout: 30000
             warning_message: "Shop page redirect after publish timed out. Directly navigating to Shop page."
             fallback_url: "https://release.pear.us/yu-xiao"
-            fallback_timeout: 90000
+            fallback_timeout: 30000
             wait_for_timeout: 1500
-            wait_for_cards_timeout: 60000
+            wait_for_cards_timeout: 6000
     expect_result:
         description: "Product card alignment should be verified for both Top aligned and Waterfall layouts."
         assertions: []
@@ -81,8 +80,8 @@ testT3554:
     expect_result:
         description: "Verify that the new module is visible on the page"
         assertions:
-          - assertion_type: "element_visible_by_text"
-            text: "test new module"
+            - assertion_type: "element_visible_by_text"
+              text: "test new module"
 
 testT4264:
     description: "Verify that the user adds the link card of 'Image' on the shop page(navigation bar) and module menu"
@@ -92,8 +91,11 @@ testT4264:
         sleep_after_open: 5000
         R_click3: { role: 'button', name: 'Module' }
         R_click_continue: { role: 'button', name: 'Continue' }
-        check1: { label: 'Links (select a type below)' }
-        l_click_regex1: { text: '^Image$', index: 0 }
+        sleep_after_add: 2000
+        check1: { label: 'Links' }
+        sleep_after_add_new: 2000
+        l_click_regex1: { role: 'dialog', name: '^Image$' }
+        sleep_after_click_image: 2000
         check2: { role: 'radio', name: 'Carousel Carousel' }
         sleep_before_add: 2000
         R_click4: { role: 'button', name: 'Add' }
@@ -101,7 +103,7 @@ testT4264:
         R_click5: { role: 'button', name: 'Add new', index: -1 }
         fill_by_placeholder_and_locator1: { placeholder: 'https://example.com', locator: 'input[name="url"]', value: 'www.baidu.com' }
         fill2: { placeholder: 'As the bold title on your link card', value: 'test aotu image' }
-        upload1: { text: 'Upload', file_path: 'D:/new test/Autotest-moster/data/test imag.jpeg' }
+        upload1: { text: 'Upload', file_path: 'D:/new test/Autotest-monster/data/test imag.jpeg' }
         wait_for_upload_and_ui_update1: { timeout: 2000 }
         sleep_before_add_2: 2000
         click_add_button_regex_final: {}
@@ -109,10 +111,8 @@ testT4264:
     expect_result:
         description: "Verify that the new image link card is visible on the page"
         assertions:
-          - assertion_type: "element_visible_by_text"
-            text: "test aotu image"
-
-
+            - assertion_type: "element_visible_by_text"
+              text: "test aotu image"
 
 testT1993:
     description: "Verify the function of generating invitation link"
@@ -122,8 +122,8 @@ testT1993:
     expect_result:
         description: "An invite link should be generated with the option to copy or share"
         assertions:
-          - assertion_type: "element_visible_by_text"
-            text: "Link copied"
+            - assertion_type: "element_visible_by_text"
+              text: "Link copied"
 
 testT855:
     description: "Verify the Share button functionality"
@@ -135,12 +135,11 @@ testT855:
     expect_result:
         description: "Share dialog or options should appear"
         assertions:
-          - assertion_type: "element_visible_by_text"
-            text: "Shop link copied — ready to"
-
+            - assertion_type: "element_visible_by_text"
+              text: "Shop link copied — ready to"
 
 testT1747:
-    description: "Verify creating a draft post"
+    description: "Verify whether clicking the 'Save as draft' button in the lower left corner of the Create Post page can save it as a draft Post"
     test_step:
         open: "https://release.pear.us/yu-xiao"
         sleep_after_open: 3000
@@ -157,11 +156,13 @@ testT1747:
         fill_subtitle: { role: 'textbox', name: 'Enter a subtitle to enrich', value: '123' }
         R_click_save_draft: { role: 'button', name: 'Save as draft' }
         sleep_after_save: 3000
+        R_click_got_it: { role: 'button', name: 'Got it' }
+        sleep_after_got_it: 2000
     expect_result:
         description: "Draft post should be saved successfully"
         assertions:
-          - assertion_type: "element_visible_by_text"
-            text: "Post saved as draft!"
+            - assertion_type: "element_visible_by_text"
+              text: "Post saved as draft!"
 
 testT4279:
     guest: true
@@ -169,17 +170,14 @@ testT4279:
     test_step:
         open: "https://release.pear.us/yu-xiao"
         swipe_avoid_plus: { x: 0, y: 300 }
-        sleep_after_open: 2500
-        click_modal_close: {}
-        sleep_after_close_popup: 1500
-        click_contact_form:
-            text: "Auto test form"
-        sleep_after_click_form: 1500
+        sleep_after_open: 3000
+        R_click_auto_test_form: { role: 'button', name: 'Auto test form' }
+        sleep_after_click_form: 3000
         fill_note:
-            name: "Note"
+            locator: 'input[name="486c448e-a3eb-43fd-bee6-392d1cd6753b"]'
             value: "test auto send"
         fill_message:
-            name: "Message"
+            locator: 'textarea[name="da325856-eabd-45a2-a3a1-501f638d0645"]'
             value: "test auto test auto test auto test auto test auto test auto test auto test auto test auto test auto test auto test auto"
         fill_email:
             role: "textbox"
@@ -189,15 +187,25 @@ testT4279:
             role: "textbox"
             name: "Phone number"
             value: "+13018427082"
-        R_click_submit:
-            role: "button"
-            name: "Submit"
+        click_start_time_picker:
+            locator: 'form button >> nth=0'
+        sleep_after_picker_1: 2000
+        click_date_16: { role: 'gridcell', name: '16' }
+        click_ok_1: { role: 'button', name: 'OK' }
+        sleep_after_date_1: 2000
+        upload_file:
+            locator: 'div:has-text("Contact usAuto test") >> nth=1 >> input[type="file"]'
+            file_path: 'D:/new test/Autotest-monster/data/test imag.jpeg'
+        sleep_after_upload: 2500
+        click_yes: { role: 'button', name: 'Yes' }
+        sleep_after_yes: 1500
+        R_click_submit: { role: 'button', name: 'Submit' }
         sleep_after_submit: 5000
     expect_result:
         description: "Form should be submitted successfully"
         assertions:
-          - assertion_type: "element_visible_by_text"
-            text: "The form was submitted"
+            - assertion_type: "element_visible_by_text"
+              text: "The form was submitted"
 
 testT1520:
     description: "Verify follow and unfollow store functionality"
@@ -248,8 +256,8 @@ testT1520:
     expect_result:
         description: "Follow and unfollow functionality should work correctly with proper toast messages"
         assertions:
-          - assertion_type: "element_visible_by_text"
-            text: "Unfollowed. You'll no longer"
+            - assertion_type: "element_visible_by_text"
+              text: "Unfollowed. You'll no longer"
 
 testT4306:
     description: "Verify viewing user form submissions"
@@ -271,10 +279,10 @@ testT4306:
     expect_result:
         description: "Form submissions should be viewable and match T4279 data"
         assertions:
-          - assertion_type: "element_visible_by_text"
-            text: "test auto send"
-          - assertion_type: "element_visible_by_text"
-            text: "yuxiao.zhu.ext@1m.app"
+            - assertion_type: "element_visible_by_text"
+              text: "test auto send"
+            - assertion_type: "element_visible_by_text"
+              text: "yuxiao.zhu.ext@1m.app"
 
 testT3556:
     description: "Verify editing an existing module"
@@ -293,8 +301,8 @@ testT3556:
     expect_result:
         description: "Module should be edited successfully"
         assertions:
-          - assertion_type: "element_visible_by_text"
-            text: "test updated module"
+            - assertion_type: "element_visible_by_text"
+              text: "test updated module"
 
 testT3842:
     description: "Verify adding a new product to an existing module"
@@ -316,7 +324,7 @@ testT3842:
         fill_product_url: { placeholder: 'https://example.com', value: 'www.baidu.com' }
         fill_product_title: { placeholder: 'As the bold title on your', value: 'test prodcut link card' }
         fill_product_price: { placeholder: 'Enter a price for sale', value: '20.99' }
-        upload_product_image: { text: 'Upload', file_path: 'D:/new test/Autotest-moster/data/test imag.jpeg' }
+        upload_product_image: { text: 'Upload', file_path: 'D:/new test/Autotest-monster/data/test imag.jpeg' }
         sleep_after_upload: 3000
         sleep_before_final_add: 2000
         click_add_button_regex: {}
@@ -325,27 +333,26 @@ testT3842:
     expect_result:
         description: "Product should be added to the module successfully"
         assertions:
-          - assertion_type: "element_visible_by_text"
-            text: "test auto product"
+            - assertion_type: "element_visible_by_text"
+              text: "test prodcut link card"
 
 testT2129:
-    description: "Verify creating a post from a product card"
+    description: "Verify the Product card can create post success on my shop page"
     test_step:
         open: "https://release.pear.us/yu-xiao"
         sleep_after_open: 3000
         R_click_more_action: { role: 'button', name: 'More action' }
         sleep_after_more: 1500
-        R_click_list_item: { role: 'listitem', index: 0 }
-        sleep_after_list: 3000
+        R_click_listitem: { role: 'listitem' }
+        sleep_after_listitem: 4500
         R_click_save_draft: { role: 'button', name: 'Save as draft' }
-        sleep_after_save: 5000
-        verify_message_content: { text: 'Post saved as draft!' }
-        click_text: { text: 'Got it' }
-        sleep_after_got: 3000
+        sleep_after_save: 500
+        R_click_got_it: { role: 'button', name: 'Got it' }
+        sleep_after_got: 1000
         R_click_view_shop: { role: 'button', name: 'View in My Shop' }
         sleep_after_view: 1500
     expect_result:
         description: "Post should be saved as draft successfully"
         assertions:
-          - assertion_type: "element_visible_by_text"
-            text: "Post saved as draft!"
+            - assertion_type: "element_visible_by_text"
+              text: "Post saved as draft!"

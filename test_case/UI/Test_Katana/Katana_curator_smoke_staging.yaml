@@ -6,54 +6,54 @@ testT3370:
         sleep_init: 1000
         goto_storefront_top_aligned:
             url: "https://hui.staging.pear.us/storefront-modules#Storefront"
-            timeout: 90000
+            timeout: 9000
         check_label_top_aligned:
             label: "Top aligned"
-            timeout: 60000
+            timeout: 6000
         publish_button_click_top_aligned: {}
         verify_navigation_after_publish_top_aligned:
             url_regex: "https://hui.staging.pear.us/santiycheck-curator-111"
-            timeout: 70000
+            timeout: 30000
             warning_message: "Shop page redirect after publish timed out. Directly navigating to Shop page."
             fallback_url: "https://hui.staging.pear.us/santiycheck-curator-111"
-            fallback_timeout: 90000
+            fallback_timeout: 30000
         click_mui_svg_icon_top_aligned: {}
         click_products_text_top_aligned: {}
         wait_for_product_cards_top_aligned:
             index: 1
-            timeout: 60000
+            timeout: 6000
         verify_top_aligned_layout:
-            timeout: 60000
+            timeout: 6000
             screenshot_path: "recordings/top_aligned_failure.png"
             threshold: 5
         screenshot_final:
             name: "demi_release_page.png"
         goto_storefront_waterfall:
             url: "https://hui.staging.pear.us/storefront-modules#Storefront"
-            timeout: 90000
+            timeout: 9000
         check_label_waterfall:
             label: "Waterfall"
-            timeout: 60000
+            timeout: 6000
         publish_button_click_waterfall: {}
         verify_navigation_after_publish_waterfall:
             url_regex: "https://hui.staging.pear.us/santiycheck-curator-111"
-            timeout: 70000
+            timeout: 30000
             warning_message: "Shop page redirect after publish timed out. Directly navigating to Shop page."
             fallback_url: "https://hui.staging.pear.us/santiycheck-curator-111"
-            fallback_timeout: 90000
+            fallback_timeout: 30000
         click_mui_svg_icon_waterfall: {}
         click_products_text_waterfall: {}
         wait_for_product_cards_waterfall:
             index: 1
-            timeout: 60000
+            timeout: 6000
         verify_waterfall_layout:
             url_regex: "https://hui.staging.pear.us/santiycheck-curator-111"
-            timeout: 70000
+            timeout: 30000
             warning_message: "Shop page redirect after publish timed out. Directly navigating to Shop page."
             fallback_url: "https://hui.staging.pear.us/santiycheck-curator-111"
-            fallback_timeout: 90000
+            fallback_timeout: 30000
             wait_for_timeout: 1500
-            wait_for_cards_timeout: 60000
+            wait_for_cards_timeout: 6000
     expect_result:
         description: "Product card alignment should be verified for both Top aligned and Waterfall layouts."
         assertions: []
@@ -90,8 +90,11 @@ testT4264:
         sleep_after_open: 5000
         R_click3: { role: 'button', name: 'Module' }
         R_click_continue: { role: 'button', name: 'Continue' }
-        check1: { label: 'Links (select a type below)' }
-        l_click_regex1: { text: '^Image$', index: 0 }
+        sleep_after_add: 2000
+        check1: { label: 'Links' }
+        sleep_after_add_new: 2000
+        l_click_regex1: { role: 'dialog', name: '^Image$' }
+        sleep_after_click_image: 2000
         check2: { role: 'radio', name: 'Carousel Carousel' }
         sleep_before_add: 2000
         R_click4: { role: 'button', name: 'Add' }
@@ -99,7 +102,7 @@ testT4264:
         R_click5: { role: 'button', name: 'Add new', index: -1 }
         fill_by_placeholder_and_locator1: { placeholder: 'https://example.com', locator: 'input[name="url"]', value: 'www.baidu.com' }
         fill2: { placeholder: 'As the bold title on your link card', value: 'test aotu image' }
-        upload1: { text: 'Upload', file_path: 'D:/new test/Autotest-moster/data/test imag.jpeg' }
+        upload1: { text: 'Upload', file_path: 'D:/new test/Autotest-monster/data/test imag.jpeg' }
         wait_for_upload_and_ui_update1: { timeout: 2000 }
         sleep_before_add_2: 2000
         click_add_button_regex_final: {}
@@ -166,17 +169,14 @@ testT4279:
     test_step:
         open: "https://hui.staging.pear.us/santiycheck-curator-111"
         swipe_avoid_plus: { x: 0, y: 300 }
-        sleep_after_open: 2500
-        click_modal_close: {}
-        sleep_after_close_popup: 1500
-        click_contact_form:
-            text: "Auto test form"
+        sleep_after_open: 3000
+        R_click_auto_test_form: { role: 'button', name: 'Auto test form' }
         sleep_after_click_form: 3000
         fill_note:
-            locator: 'input[placeholder="Please fill this out"]'
+            locator: 'input[name="486c448e-a3eb-43fd-bee6-392d1cd6753b"]'
             value: "test auto send"
         fill_message:
-            locator: 'textarea[placeholder="Please fill this out"]'
+            locator: 'textarea[name="da325856-eabd-45a2-a3a1-501f638d0645"]'
             value: "test auto test auto test auto test auto test auto test auto test auto test auto test auto test auto test auto test auto"
         fill_email:
             role: "textbox"
@@ -186,32 +186,19 @@ testT4279:
             role: "textbox"
             name: "Phone number"
             value: "+13018427082"
-        R_click_start_date:
-            role: "button"
-        sleep_after_start_date: 2000
-        R_click_start_date:
-            role: "gridcell"
-            name: "16"
-        sleep_after_start_date: 2000
-        R_click_start_date_ok:
-            role: "button"
-            name: "OK"
-        sleep_after_start_date_ok: 2000
-        R_click_end_date:
-            role: "textbox"
-            name: "MM/DD/YYYY hh:mm"
-        sleep_after_end_date: 2000
-        R_click_end_date:
-            role: "gridcell"
-            name: "17"
-        sleep_after_end_date: 2000
-        R_click_end_date_ok:
-            role: "button"
-            name: "OK"
-        sleep_after_end_date_ok: 2000
-        R_click_submit:
-            role: "button"
-            name: "Submit"
+        click_start_time_picker:
+            locator: 'form button >> nth=0'
+        sleep_after_picker_1: 2000
+        click_date_16: { role: 'gridcell', name: '16' }
+        click_ok_1: { role: 'button', name: 'OK' }
+        sleep_after_date_1: 2000
+        upload_file:
+            locator: 'div:has-text("Contact usAuto test") >> nth=1 >> input[type="file"]'
+            file_path: 'D:/new test/Autotest-monster/data/test imag.jpeg'
+        sleep_after_upload: 2500
+        click_yes: { role: 'button', name: 'Yes' }
+        sleep_after_yes: 1500
+        R_click_submit: { role: 'button', name: 'Submit' }
         sleep_after_submit: 5000
     expect_result:
         description: "Form should be submitted successfully"
@@ -336,7 +323,7 @@ testT3842:
         fill_product_url: { placeholder: 'https://example.com', value: 'www.baidu.com' }
         fill_product_title: { placeholder: 'As the bold title on your', value: 'test prodcut link card' }
         fill_product_price: { placeholder: 'Enter a price for sale', value: '20.99' }
-        upload_product_image: { text: 'Upload', file_path: 'D:/new test/Autotest-moster/data/test imag.jpeg' }
+        upload_product_image: { text: 'Upload', file_path: 'D:/new test/Autotest-monster/data/test imag.jpeg' }
         sleep_after_upload: 3000
         sleep_before_final_add: 2000
         click_add_button_regex: {}

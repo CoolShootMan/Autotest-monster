@@ -1,111 +1,126 @@
-## Auto Test Framework v3.0
-> API & UI Auto Test framework using Python + pytest + playwright + allure
+## Auto Test Framework v4.0
+> UI Automation Testing with AI Self-Healing using Python + Pytest + Playwright + Allure + Gemini Vision AI
 
 English | [简体中文](./README.md)
 
-- Simple architecture diagram
-
-![IsXMnO.png](./1.png)
-
-
 ## Features
-- Interface data dependency: Interface B can use a field from Interface A's response as a parameter
-- Dynamic multiple assertions: Dynamically extract actual results and compare them with expected results
-- SQL query assertion support
-- UI test case development based on PO (Page Object) pattern
-- Rewritten source page and context methods with session persistence support
-- Automatically update online test case status after test completion (e.g., passed, failed, skipped...)
-- Automatically generate allure test reports after test completion
+- **Keyword-Driven Testing**: Define test cases in YAML — no coding required
+- **Action Registry Pattern**: Modular action registry supporting team collaboration
+- **AI Self-Healing**: When traditional locators fail, Gemini Vision AI automatically identifies and repairs element targeting
+- **RAG Knowledge Base**: FAISS + SentenceTransformers powered domain knowledge retrieval for AI context
+- **Execution History Tracking**: Records successful steps to provide AI with current test flow state
+- **Multi-Environment Support**: Switch between staging/release via `--env` parameter
+- **Dynamic Assertions**: Multiple assertion types (text visibility, element existence, etc.)
+- **Auto-generated Allure Reports**
+
+## Architecture Overview
+
+```
+YAML Test Definitions
+    ↓
+test_ui.py (Step Dispatcher + Execution History Tracker)
+    ↓
+actions/ (Action Registry)
+    ├── base.py → smart_click / smart_fill (with AI Fallback)
+    ├── module.py / product.py / form.py ...
+    ↓
+┌─ Traditional Playwright Locators (role/text/locator)
+│   Success → Continue
+│   Failure ↓
+└─ AI Self-Healing Engine (utils/ai_vision.py)
+       ├── Screenshot + SOM Overlay
+       ├── RAG Knowledge Base Query (utils/rag_knowledge.py)
+       ├── Execution History Context Injection
+       └── Gemini Vision Analysis → Target Element ID
+              ↓
+         Healed Action Continues
+              ↓
+         Allure Report + Screenshots/Recordings
+```
 
 ## Directory Structure
 ```shell
 ├─config
-│  └─config.yaml	# Configuration file
-├─log
-│  └─YYYY-MM-DD.log	# Log files
+│  └─config.yaml          # Configuration file
 ├─page
-  └─home.py		# UI layer base encapsulation
-├─recordings	# Location for recorded step files, AI can reference elements here
-├─report
-│  ├─data           # allure test result data
-│  ├─html			      # allure reports
-│  └─video		      # allure reports
-├─test-result       # Test output path for recordings and screenshots
+│  └─home.py              # UI layer base encapsulation
+├─recordings              # Playwright codegen recorded scripts
 ├─test_case
-|  └─UI
-|    ├─Test_Katana
-|    |  ├─actions       # [NEW] Action Registry
-|    |  |  ├─__init__.py # Registry entry point
-|    |  |  ├─base.py     # Base actions (open, click, fill)
-|    |  |  ├─module.py   # Module-related actions
-|    |  |  ├─product.py  # Product-related actions
-|    |  |  ├─form.py     # Form-related actions
-|    |  |  └─layout.py   # Layout verification actions
-|    |  ├─conftest.py   # UI test initialization (multi-environment support)
-|    |  ├─test_ui.py    # [Refactored] Core test execution engine (dispatcher)
-|    |  ├─Katana_curator_smoke_staging.yaml # Staging environment test cases
-|    |  └─Katana_curator_smoke.yaml         # Release environment test cases
-|
-├─tools		            # Utility package
-│  ├─__init__.py		  # Common method encapsulation
-│  ├─data_process.py	# Dependency data processing
-│  ├─sql_operate.py   # Database operations
-│  ├─email_send.py    # Email sending
-│  ├─encode.py        # Interface encryption/decryption
-│  ├─generate_data.py # Test data generation
-│  ├─read_file.py     # YAML file retrieval wrapper
-│  └─get_cookie.py    # Cookie retrieval for login
-│  └─update_test_status.py    # Update online test case status
-├─requirements.txt		# Project dependency file
-└─main.py	# Main startup file
+│  └─UI
+│    └─Test_Katana
+│       ├─actions/         # Action Registry
+│       │  ├─__init__.py   # Registry entry point
+│       │  ├─base.py       # Base actions (smart_click, smart_fill, AI Fallback)
+│       │  ├─module.py     # Module-related actions
+│       │  ├─product.py    # Product-related actions
+│       │  ├─form.py       # Form-related actions
+│       │  └─layout.py     # Layout verification actions
+│       ├─utils/           # [NEW v4.0] AI Self-Healing Toolkit
+│       │  ├─ai_vision.py  # Gemini Vision AI Service (SOM + Multi API Key Rotation)
+│       │  ├─rag_knowledge.py  # RAG Knowledge Base (FAISS + SentenceTransformers)
+│       │  └─Knowledge_Base.md # Domain Knowledge Document
+│       ├─conftest.py      # Pytest fixtures (multi-env + auth)
+│       ├─test_ui.py       # Core test execution engine (with execution history)
+│       └─Katana_curator_smoke_release.yaml  # Release environment test cases
+├─tools                    # Utilities
+│  ├─__init__.py           # Allure integration
+│  └─get_cookie.py         # Cookie retrieval
+├─requirements.txt         # Project dependencies
+└─main.py                  # Main entry point
 ```
 
-## Getting Started
-1. Install dependencies: `pip install -r requirements.txt`
-```shell
-Note: If the target deployment server cannot access the internet, you can download dependencies to the packages/ folder using the command `pip download -d packages/ -r requirements.txt`, and then install offline on the target server using `pip install --no-index --find-links=packages/ -r requirements.txt`
+## Quick Start
+
+### 1. Install Dependencies
+```bash
+pip install -r requirements.txt
 ```
 
-2. Write UI test cases
+### 2. Environment Setup
+Create a `.env` file (or set environment variables) with Gemini API Keys:
 ```
-UI Test Case Writing Guide
-Write according to the following specifications, using keyword-driven test execution
-Case naming: For easy management and neat appearance, it is recommended to use a unified naming convention, such as xxx(project)-xxx(module)-test001
-description (test case description)
-test_step (test steps) Writing example:   test_step: { "open": "https://www.jd.com/",
-                                "click1": "id=msShortcutLogin",
-                                "fill1": {"selector": "#sb_form_q", "value": "test_account20221212"},
-                                "swipe": {"x": 500, y: 800}
-                                "sleep": 3000
-                               }
-Supported keywords include: open (open URL), click1 (click event, 1 represents the first click, similarly click2 represents the second click in the test case)
-sleep (explicit wait, in milliseconds), fill1 (text fill event, requires two key-value pairs: one for the element to fill and one for the value. The number 1 usage is the same as click1)
-swipe (page swipe event)
-expect_result (expected result) Writing example: {  "description": "Expected page '#header > span.text-header' element text is 'JD Login Registration'",
-                                   "selector": "#header > span.text-header",
-                                    "value": "JD Login Registration"
-                                   }
+GEMINI_API_KEYS=key1,key2,key3
 ```
-3. Start tests using `python main.py` command
-4. View reports and results
 
+### 3. Run Tests
+```bash
+# Run a specific test case (headed mode)
+pytest test_case/UI/Test_Katana/test_ui.py -k "testT4777" --headed -v --env release --storage-state test_case/UI/Test_Katana/cookie_release.json
 
-## V3.0 Action Registry Architecture Upgrade
+# Run all test cases and generate reports
+python main.py
+```
 
-To support multi-developer collaboration and improve code maintainability, we have introduced the Action Registry pattern under `test_case/UI/Test_Katana/actions/`.
+### 4. View Reports
+Allure reports open automatically after test completion.
 
-### Core Changes
-1. **Modular Actions**: Business logic is no longer piled in `test_ui.py`. It has been split into `module.py`, `product.py`, `form.py`, etc.
-2. **Dynamic Dispatch**: `test_ui.py` becomes a thin client, only responsible for reading YAML and dynamically calling corresponding handler functions via `get_action(key)`.
-3. **Registry**: `actions/__init__.py` maintains the mapping between keywords and functions.
+## V4.0 AI Self-Healing Architecture
 
-### How to Add New Test Steps
-1. Find or create an appropriate module file in the `actions/` directory (e.g., `new_feature.py`).
-2. Write the corresponding handler function `def my_new_action(page: Page, v: dict): ...`.
-3. Import the function in `actions/__init__.py` and register it in the `ACTIONS` dictionary: `"my_new_step_key": my_new_action`.
-4. Use the key in the YAML test case: `my_new_step_key: { param: value }`.
+### Core Flow
+1. `smart_click` first tries traditional Playwright locators (role/name/text)
+2. If timeout after 5s, triggers Legacy Fallback (15s)
+3. If still failing, triggers **AI Self-Healing**:
+   - Screenshots current page with SOM (Set-of-Mark) overlay
+   - Queries RAG knowledge base for relevant business context
+   - Sends screenshot + target description + execution history + RAG knowledge to Gemini Vision
+   - AI returns diagnosis and target element ID
+   - Clicks the AI-identified element
 
-### Multi-Environment Support
-Switch environments using the `--env` command line parameter (staging/release), and the system will automatically load the corresponding YAML configuration file.
-- Staging: `pytest --env staging ...` (loads `_staging.yaml`)
-- Release: `pytest --env release ...` (loads default or `_release.yaml`)
+### RAG Knowledge Base
+`utils/Knowledge_Base.md` stores business rules and UI navigation patterns including:
+- System architecture and module overview
+- Common navigation patterns (FAB button, event management, etc.)
+- UI element characteristics and locator strategies
+- Known automation pitfalls and solutions
+
+### How to Extend the Knowledge Base
+When AI self-healing makes incorrect decisions, add the corresponding business rules to `Knowledge_Base.md`. The AI will automatically retrieve and reference them next time.
+
+## Multi-Environment Support
+```bash
+# Staging environment
+pytest --env staging ...
+
+# Release environment
+pytest --env release ...
+```

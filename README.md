@@ -1,111 +1,127 @@
-## Auto Test 框架 v3.0
-> pytest + request + playwright +  allure 实现接口及ui自动化测试
+## Auto Test 框架 v4.0
+> pytest + playwright + allure + Gemini AI 实现 UI 自动化测试 + AI 自愈
 
 简体中文 | [English](./README.en.md)
 
-- 简易架构图
-
-![IsXMnO.png](./1.png)
-
-
 ## 实现功能
-- 接口直接的数据依赖: 需要B接口使用A接口响应中的某个字段作为参数
-- 动态多断言： 可（多个）动态提取实际预期结果与指定的预期结果进行比较断言操作
-- 支持sql查询断言
-- 支持UI测试用例编写,基于po模式
-- 重写源码page及context方法，支持会话保持
-- 测试完成自动更新线上测试用例的状态，例如：通过，失败，跳过...
-- 测试完成自动生成allure测试报告
+- **关键字驱动**: YAML 定义测试用例，无需编码即可编写 UI 自动化测试
+- **Action Registry 模式**: 模块化动作注册表，支持多人协作开发
+- **AI 自愈 (Self-Healing)**: 当传统定位器失效时，基于 Gemini Vision 的 AI 自动识别并修复元素定位
+- **RAG 知识库增强**: 使用 FAISS + SentenceTransformers 构建领域知识库，为 AI 提供业务上下文
+- **执行历史追踪**: 自动记录已成功执行的步骤，为 AI 提供当前测试流程状态
+- **多环境支持**: 通过 `--env` 参数切换 staging/release 环境
+- **动态多断言**: 支持多种断言类型（文本可见性、元素存在性等）
+- **测试完成自动生成 Allure 测试报告**
+
+## 架构概览
+
+```
+YAML 测试定义
+    ↓
+test_ui.py (步骤分发器 + 执行历史追踪)
+    ↓
+actions/ (Action Registry 动作注册表)
+    ├── base.py → smart_click / smart_fill (含 AI Fallback)
+    ├── module.py / product.py / form.py ...
+    ↓
+┌─ 传统 Playwright 定位 (role/text/locator)
+│   成功 → 继续执行
+│   失败 ↓
+└─ AI 自愈引擎 (utils/ai_vision.py)
+       ├── 截图 + SOM 标注
+       ├── RAG 知识库检索 (utils/rag_knowledge.py)
+       ├── 执行历史上下文注入
+       └── Gemini Vision 分析 → 输出目标元素 ID
+              ↓
+         修复后继续执行
+              ↓
+         Allure 报告 + 截图/录屏
+```
 
 ## 目录结构
 ```shell
 ├─config
-│  └─config.yaml	# 配置文件
-├─log
-│  └─YYYY-MM-DD.log	# 日志文件
+│  └─config.yaml          # 配置文件
 ├─page
-  └─home.py		# UI层基础封装
-├─recordings	# 录制步骤的文件存放位置，AI可参考此处元素
-├─report
-│  ├─data           # allure测试结果数据
-│  ├─html			      # allure报告
-│  └─video		      # allure报告
-├─test-result       # 测试录屏与截屏结果输出路径
+│  └─home.py              # UI 层基础封装
+├─recordings              # playwright codegen 录制脚本
 ├─test_case
-|  └─UI
-|    ├─Test_Katana
-|    |  ├─actions       # [NEW] 动作注册表 (Action Registry)
-|    |  |  ├─__init__.py # 注册表入口
-|    |  |  ├─base.py     # 基础动作 (open, click, fill)
-|    |  |  ├─module.py   # 模块相关动作
-|    |  |  ├─product.py  # 产品相关动作
-|    |  |  ├─form.py     # 表单相关动作
-|    |  |  └─layout.py   # 布局验证动作
-|    |  ├─conftest.py   # UI测试初始化 (多环境支持)
-|    |  ├─test_ui.py    # [Refactored] 核心测试执行引擎 (分发器)
-|    |  ├─Katana_curator_smoke_staging.yaml # 预发环境用例
-|    |  └─Katana_curator_smoke.yaml         # 发布环境用例
-|
-├─tools		            # 工具包
-│  ├─__init__.py		  # 常用方法封装
-│  ├─data_process.py	# 依赖数据处理
-│  ├─sql_operate.py   # 数据库操作
-│  ├─email_send.py    # 邮件发送
-│  ├─encode.py        # 接口加解密
-│  ├─generate_data.py # 测试数据生成
-│  ├─read_file.py     # yaml文件获取封装
-│  └─get_cookie.py    # 获取登录用的cookie
-│  └─update_test_status.py    # 更新线上测试用例的状态
-├─requirements.txt		# 项目依赖库文件
-└─main.py	# 主启动文件
+│  └─UI
+│    └─Test_Katana
+│       ├─actions/         # Action Registry (动作注册表)
+│       │  ├─__init__.py   # 注册表入口
+│       │  ├─base.py       # 基础动作 (smart_click, smart_fill, AI Fallback)
+│       │  ├─module.py     # 模块相关动作
+│       │  ├─product.py    # 产品相关动作
+│       │  ├─form.py       # 表单相关动作
+│       │  └─layout.py     # 布局验证动作
+│       ├─utils/           # [NEW v4.0] AI 自愈工具集
+│       │  ├─ai_vision.py  # Gemini Vision AI 服务 (SOM + 多 API Key 轮换)
+│       │  ├─rag_knowledge.py  # RAG 知识库 (FAISS + SentenceTransformers)
+│       │  └─Knowledge_Base.md # 领域知识库文档
+│       ├─conftest.py      # Pytest fixtures (多环境 + 认证)
+│       ├─test_ui.py       # 核心测试执行引擎 (含执行历史追踪)
+│       └─Katana_curator_smoke_release.yaml  # Release 环境用例
+├─tools                    # 工具包
+│  ├─__init__.py           # Allure 集成等
+│  └─get_cookie.py         # Cookie 获取
+├─requirements.txt         # 项目依赖
+└─main.py                  # 主启动文件
 ```
 
-## 使用项目
-1. 依赖安装 pip install -r requirements.txt
-```shell
-注： 如果需要移植的目标服务器无法联网 可以通过pip download -d packages/ -r requirements.txt 命令下载依赖包到当前目录的packages/文件夹中，目标服务器再通过 pip install --no-index --find-links=packages/ -r requirements.txt 离线安装依赖包
+## 快速开始
+
+### 1. 安装依赖
+```bash
+pip install -r requirements.txt
 ```
 
-2. UI编写UI测试用例
+### 2. 环境配置
+创建 `.env` 文件（或设置环境变量），配置 Gemini API Keys：
 ```
-UI 测试用例编写指南
-按照如下规范编写, 以关键字驱动测试执行
-用例命名,为便于管理及美观整洁建议统一命名,如xxx(project)-xxx(mudule)-test001
-descrption(用例描述)
-test_step(测试步骤) 编写样例   test_step: { "open": "https://www.jd.com/",
-                                "click1": "id=msShortcutLogin",
-                                "fill1": {"selector": "#sb_form_q", "value": "test_account20221212"},
-                                "swipe": {"x": 500, y: 800}
-                                "sleep": 3000
-                               }
-支持的关键字有open(打开url), click1(点击事件,1则代表第一次点击,同理click2代表该测试用例中的第二次点击)
-sleep(显式等待,使用毫秒),fill1(文本填充事件,需传入两个键值对,一个填充的元素对象,一个填充的值。数字1的用法与click1一致)
-swipe(页面滑动事件)
-expect_result(期望结果) 编写样例 {  "descrption": "期望页面"#header > span.text-header"元素的文案是'京东登录注册'",
-                                   "selector": "#header > span.text-header",
-                                    "value": "京东登录注册"
-                                   }
+GEMINI_API_KEYS=key1,key2,key3
 ```
-3. 使用python main.py命令启动测试
-4. 查看报告和结果
 
+### 3. 运行测试
 
-## V3.0 Action Registry 架构升级
+```bash
+# 运行特定用例 (headed 模式)
+pytest test_case/UI/Test_Katana/test_ui.py -k "testT4777" --headed -v --env release --storage-state test_case/UI/Test_Katana/cookie_release.json
 
-为了支持多人协作开发及提高代码维护性，我们在 `test_case/UI/Test_Katana/actions/` 下引入了动作注册表模式。
+# 运行全部用例并生成报告
+python main.py
+```
 
-### 核心变更
-1. **模块化动作**: 不再将所有逻辑堆积在 `test_ui.py` 中。业务逻辑被拆分到 `module.py`, `product.py`, `form.py` 等文件中。
-2. **动态分发**: `test_ui.py` 变为瘦客户端，仅负责读取 YAML 并通过 `get_action(key)` 动态调用对应的处理函数。
-3. **注册表**: `actions/__init__.py` 维护了关键字到函数的映射关系。
+### 4. 查看报告
+运行完成后 Allure 报告会自动打开。
 
-### 如何新增测试步骤
-1. 在 `actions/` 目录下找到或创建合适的模块文件 (如 `new_feature.py`)。
-2. 编写对应的处理函数 `def my_new_action(page: Page, v: dict): ...`。
-3. 在 `actions/__init__.py` 中导入该函数，并在 `ACTIONS` 字典中注册：`"my_new_step_key": my_new_action`。
-4. 在 YAML 用例中使用该 Key: `my_new_step_key: { param: value }`。
+## V4.0 AI 自愈架构
 
-### 多环境支持
-通过命令行参数 `--env` 切换环境 (staging/release)，系统会自动加载对应的 YAML 配置文件。
-- Staging: `pytest --env staging ...` (加载 `_staging.yaml`)
-- Release: `pytest --env release ...` (加载默认或 `_release.yaml`)
+### 核心流程
+1. `smart_click` 先尝试传统 Playwright 定位 (role/name/text)
+2. 如果 5s 内超时，触发 Legacy Fallback (15s)
+3. 如果仍然失败，触发 **AI Self-Healing**：
+   - 对当前页面截图并注入 SOM (Set-of-Mark) 标注
+   - 查询 RAG 知识库获取相关业务上下文
+   - 将截图 + 目标描述 + 执行历史 + RAG 知识 发送至 Gemini Vision
+   - AI 返回诊断结果和目标元素 ID
+   - 根据 AI 指引点击目标元素
+
+### RAG 知识库
+`utils/Knowledge_Base.md` 存储了系统的业务规则和 UI 导航模式，包括：
+- 系统架构和模块概述
+- 常见导航模式（FAB 按钮、事件管理等）
+- UI 元素特征和定位策略
+- 已知的自动化陷阱和解决方案
+
+### 如何补充知识库
+当 AI 自愈出现误判时，在 `Knowledge_Base.md` 中添加对应的业务规则，AI 下次会自动检索并参考。
+
+## 多环境支持
+```bash
+# Staging 环境
+pytest --env staging ...
+
+# Release 环境
+pytest --env release ...
+```

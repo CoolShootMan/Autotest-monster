@@ -12,10 +12,12 @@ from .base import (
     wait_for_selector,
     wait_for_url,
     save_html,
-    click_modal_close
+    click_modal_close,
+    verify_text_visible
 )
-from .module import click_module_edit_button, click_module_paragraph, click_add_new_product
+from .module import click_module_edit_button, click_module_paragraph, click_add_new_product, click_module_add_new
 from .product import (
+
     click_add_button_regex, verify_product_clickable, click_products_nav_icon,
     click_products_tab_t2129, click_bell_button, click_product_plus_button,
     click_product_image, verify_post_exists, R_click_follow, 
@@ -78,6 +80,7 @@ ACTIONS = {
     "verify_waterfall_layout": verify_waterfall_layout,
     "verify_follow_message": verify_toast_message,
     "verify_unfollow_message": verify_toast_message,
+    "verify_unfollow_message_final": verify_toast_message,
     "verify_refollow_message": verify_toast_message,
 
     # T3370 Layout Specific
@@ -91,10 +94,14 @@ ACTIONS = {
     "click_mui_svg_icon_waterfall": click_mui_svg_icon,
     "click_products_text_top_aligned": click_products_text,
     "click_products_text_waterfall": click_products_text,
+    "wait_for_product_cards_top_aligned": wait_for_product_cards,
     "wait_for_product_cards_waterfall": wait_for_product_cards,
     "check_label_top_aligned": smart_check,
     "check_label_waterfall": smart_check,
     "verify_invitation_link_clipboard": verify_invitation_link_clipboard,
+    "verify_text_visible": verify_text_visible,
+    "click_module_add_new": click_module_add_new,
+    "verify_product_visible": verify_text_visible,
 }
 
 def get_action(name):
@@ -108,13 +115,13 @@ def get_action(name):
         return ACTIONS[name]
     
     # 2. Prefix mapping
-    if name.startswith("R_click") or name.startswith("click"):
+    if name.startswith("R_click") or name.startswith("click") or name.startswith("l_click"):
         return smart_click
     elif name.startswith("fill"):
         return smart_fill
     elif name.startswith("check"):
         return smart_check
-    elif name.startswith("swipe"):
+    elif name.startswith("swipe") or name.startswith("scroll"):
         return smart_swipe
     elif name.startswith("sleep"):
         return smart_sleep

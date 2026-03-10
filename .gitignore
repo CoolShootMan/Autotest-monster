@@ -1,0 +1,60 @@
+# === Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# === Virtual Environment ===
+venv/
+.venv/
+env/
+
+# === IDE ===
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# === Pytest ===
+.pytest_cache/
+
+# === Sensitive / Auth ===
+# Cookie files contain real auth tokens - NEVER commit
+test_case/UI/Test_Katana/cookie_*.json
+test_case/UI/Test_Katana/staging_cookie.json
+*.env
+.env.*
+
+# === Logs ===
+log/
+*.log
+t4264_log.txt
+
+# === AI Self-Healing Screenshots (generated at runtime) ===
+ai_healing_screenshots/
+ai_healing_*.png
+
+# === Debug files (temporary) ===
+gemini-tasks/
+debug_*.py
+check_field.py
+debug_drawer.py
+
+# === Test Reports & Results (generated at runtime) ===
+allure/
+allure-results/
+report/
+test-result/
+test-results/
+
+# === Temp screenshots ===
+1.png
+crash_click.png
+
+# === OS Files ===
+Thumbs.db
+.DS_Store

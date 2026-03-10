@@ -61,8 +61,8 @@ def start_autotest():
     logger.info(f"Calling test status update script: {status_script_path}")
     subprocess.run(["python", status_script_path]) # Run the script
     
-    os.system(f'{allure_path} generate {allure_data_dir} -o  {allure_report_dir} -c')
-    os.system(f'{allure_path} open {allure_report_dir}')
+    os.system(f'"{allure_path}" generate "{allure_data_dir}" -o "{allure_report_dir}" -c')
+    os.system(f'"{allure_path}" open "{allure_report_dir}"')
 
 
 if __name__ == '__main__':

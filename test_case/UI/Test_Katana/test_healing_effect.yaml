@@ -1,0 +1,10 @@
+test_healing_effect:
+  - open: https://release.pear.us/yu-xiao
+  - sleep: 3000
+  - R_click:
+      name: "^Module$"
+      locator: "#this-is-a-completely-wrong-locator-id-to-force-ai-healing"
+      exact: true
+  - sleep: 2000
+  - verify_text_visible:
+      text: "Module Title" # Should pass if AI correctly clicks 'Module' and opens the management view

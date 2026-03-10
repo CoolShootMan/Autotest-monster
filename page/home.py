@@ -28,14 +28,16 @@ def page_element_role_click(page: Page, role, name, index=None, exact=False, for
     """
     with allure.step(f'点击了元素-{role},出现文本-{name}'):
         logger.info(f'点击了元素-{role},出现文本-{name}')
+    with allure.step(f'点击了元素-{role},出现文本-{name}'):
+        logger.info(f'点击了元素-{role},出现文本-{name}')
     if index is not None:
         locator = page.get_by_role(role=role, name=name, exact=exact).nth(index=index)
         # locator.scroll_into_view_if_needed()
-        locator.click(force=force)
+        locator.click(force=force, timeout=15000)
     else:
         locator = page.get_by_role(role=role, name=name, exact=exact).first
         # locator.scroll_into_view_if_needed()
-        locator.click(force=force)
+        locator.click(force=force, timeout=15000)
 
 def page_element_label_click(page: Page, text, index=0):
     """ 页面点击事件
@@ -43,7 +45,7 @@ def page_element_label_click(page: Page, text, index=0):
     """
     with allure.step(f'点击了元素-{text}'):
         logger.info(f'点击了元素-{text}')
-    page.get_by_label(text=text).nth(index).click()
+    page.get_by_label(text=text).nth(index).click(timeout=15000)
 
 def page_element_input_fill(page: Page, selector,value):
     """ 页面input框文本填充(Demo用) """

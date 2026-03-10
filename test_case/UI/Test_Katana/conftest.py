@@ -171,10 +171,7 @@ def context(
 @pytest.fixture(scope="session")
 def smokecases1_data(pytestconfig):
     env = pytestconfig.getoption("--env")
-    if env == "release":
-        filename = "Katana_curator_smoke.yaml"
-    else:
-        filename = f"Katana_curator_smoke_{env}.yaml"
+    filename = f"Katana_curator_smoke_{env}.yaml"
     
     test_case_path = os.path.join(BASE_DIR, "test_case", "UI", "Test_Katana", filename)
     logger.info(f"Loading test cases from: {test_case_path}")
@@ -192,10 +189,7 @@ def pytest_generate_tests(metafunc):
         # Note: We can't use fixtures easily inside hook-like generators without request
         # So we read the config during generation
         env = metafunc.config.getoption("--env")
-        if env == "release":
-            filename = "Katana_curator_smoke.yaml"
-        else:
-            filename = f"Katana_curator_smoke_{env}.yaml"
+        filename = f"Katana_curator_smoke_{env}.yaml"
         
         path = os.path.join(BASE_DIR, "test_case", "UI", "Test_Katana", filename)
         if os.path.exists(path):

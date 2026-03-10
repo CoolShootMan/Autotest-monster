@@ -139,15 +139,19 @@ def click_close_toast(page: Page, v: dict):
 def verify_toast_message(page: Page, v: dict):
     # Verify toast message appears
     text = v["text"]
+    timeout = v.get("timeout", 10000)
     try:
         toast_locator = page.locator(".MuiSnackbar-root").filter(has_text=re.compile(text, re.I))
-        toast_locator.wait_for(state="visible", timeout=10000)
+        toast_locator.wait_for(state="visible", timeout=timeout)
         logger.info(f"Verified message: {text}")
     except Exception as e:
-        logger.warning(f"Toast message verification failed: {e}. Checking any visible text as fallback...")
+        logger.warning(f"Toast message verification failed via Snackbar: {e}. Checking any visible text as fallback...")
         try:
-            page.get_by_text(re.compile(text, re.I), exact=False).wait_for(state="visible", timeout=3000)
+            # More robust fallback: get_by_text in the whole page
+            page.get_by_text(re.compile(text, re.I), exact=False).first.wait_for(state="visible", timeout=timeout//2)
             logger.info(f"Verified message (fallback): {text}")
-        except:
-            logger.warning(f"Fallback verification also failed.")
-            pass
+        except Exception as e2:
+            logger.error(f"FATAL: Toast message '{text}' not found anywhere on page.")
+            page.screenshot(path=f"fail_toast_{text[:10]}.png")
+            raise AssertionError(f"Toast message '{text}' not found. (Original error: {e}, Fallback error: {e2})")
+

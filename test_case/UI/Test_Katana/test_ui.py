@@ -45,6 +45,11 @@ def test_case(smokecases1, page: Page, browser: Browser, request):
     test_step = list(smokecases1.values())[0]["test_step"]
     expect_result = dict(list(smokecases1.values())[0])["expect_result"]
     
+    # Pass metadata to page object for AI context
+    setattr(page, "_test_description", description)
+    setattr(page, "_test_caseno", caseno)
+    setattr(page, "_execution_history", [])  # Initialize execution history
+    
     allure_title(caseno)
     allure_step_no(f'description:{description}')
     allure_step_no(f'test_step:{str(test_step)}')
@@ -59,6 +64,8 @@ def test_case(smokecases1, page: Page, browser: Browser, request):
         if action:
             try:
                 action(page, v)
+                # Record successful step
+                page._execution_history.append((k, v))
             except Exception as e:
                 logger.error(f"Action '{k}' failed: {e}")
                 # Try generic screenshot on failure
@@ -66,15 +73,24 @@ def test_case(smokecases1, page: Page, browser: Browser, request):
                 except: pass
                 raise
         else:
-            # 2. Legacy Fallback (for anything not yet migrated)
-            logger.warning(f"Warning: Step '{k}' not found in Action Registry. Attempting legacy dispatch/fallback.")
-            # Simple fallback for generic clicks if not caught by smart_click
+            # 2. Legacy Fallback
+            logger.warning(f"Step '{k}' not found in Action Registry. Attempting legacy dispatch/fallback.")
+            fallback_success = False
             if k.startswith("click"):
                 try:
-                   page.click(f"text={v.get('text')}") 
+                   target_text = v.get('text') or v.get('name')
+                   if target_text:
+                       page.click(f"text={target_text}", timeout=5000)
+                       logger.info(f"Fallback click success for: {target_text}")
+                       fallback_success = True
+                       page._execution_history.append((k, v))
                 except:
                    pass
-            pass
+            
+            if not fallback_success:
+                logger.error(f"FATAL: Step '{k}' could not be resolved by Registry or Fallback.")
+                pytest.fail(f"Step '{k}' not found or failed in fallback. Check actions/__init__.py or YAML key.")
+
 
 
     # --- Assertion Phase ---

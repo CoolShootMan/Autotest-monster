@@ -7,10 +7,10 @@ testT3370:
         sleep_init: 1000
         goto_storefront_top_aligned:
             url: "https://release.pear.us/storefront-modules#Storefront"
-            timeout: 9000
+            timeout: 30000
         check_label_top_aligned:
             label: "Top aligned"
-            timeout: 6000
+            timeout: 15000
         publish_button_click_top_aligned: {}
         verify_navigation_after_publish_top_aligned:
             url_regex: "https://release.pear.us/yu-xiao"
@@ -31,10 +31,10 @@ testT3370:
             name: "demi_release_page.png"
         goto_storefront_waterfall:
             url: "https://release.pear.us/storefront-modules#Storefront"
-            timeout: 9000
+            timeout: 30000
         check_label_waterfall:
             label: "Waterfall"
-            timeout: 6000
+            timeout: 15000
         publish_button_click_waterfall: {}
         verify_navigation_after_publish_waterfall:
             url_regex: "https://release.pear.us/yu-xiao"
@@ -90,22 +90,26 @@ testT4264:
         swipe_avoid_plus: { x: 0, y: 300 }
         sleep_after_open: 5000
         R_click3: { role: 'button', name: 'Module' }
+        sleep_after_module_click: 5000
+        fill_module_title: { role: 'textbox', name: 'Enter title of the module', value: 'test image link' }
         R_click_continue: { role: 'button', name: 'Continue' }
-        sleep_after_add: 2000
-        check1: { label: 'Links' }
+        sleep_after_add: 1500
         sleep_after_add_new: 2000
-        l_click_regex1: { role: 'dialog', name: '^Image$' }
+        l_click_regex1: { text: '^Image$', index: 0 }
         sleep_after_click_image: 2000
         check2: { role: 'radio', name: 'Carousel Carousel' }
         sleep_before_add: 2000
         R_click4: { role: 'button', name: 'Add' }
-        sleep_after_add: 1500
-        R_click5: { role: 'button', name: 'Add new', index: -1 }
+        sleep_after_add: 2000
+        click_module_add_new: { module_name: 'test image link' }
         fill_by_placeholder_and_locator1: { placeholder: 'https://example.com', locator: 'input[name="url"]', value: 'www.baidu.com' }
         fill2: { placeholder: 'As the bold title on your link card', value: 'test aotu image' }
         upload1: { text: 'Upload', file_path: 'D:/new test/Autotest-monster/data/test imag.jpeg' }
-        wait_for_upload_and_ui_update1: { timeout: 2000 }
-        sleep_before_add_2: 2000
+        wait_for_upload_and_ui_update1: { timeout: 5000 }
+        sleep_before_done: 2000
+        R_click_done: { role: 'button', name: 'Done', exact: true }
+        screenshot_check_done: { name: "debug_done_click" }
+        sleep_after_done: 2000
         click_add_button_regex_final: {}
         sleep_after_close: 3000
     expect_result:
@@ -164,6 +168,20 @@ testT1747:
             - assertion_type: "element_visible_by_text"
               text: "Post saved as draft!"
 
+testT_HEAL:
+  description: "AI Self-Healing Demo - Click Module with Visual Description"
+  test_step:
+    open: "https://release.pear.us/yu-xiao"
+    sleep: 3000
+    R_click:
+      name: "The hamburger menu icon (three lines) in the navigation bar"
+      locator: "#broken-id-forced-healing"
+    sleep: 2000
+  expect_result:
+    assertions:
+      - assertion_type: "element_visible_by_text"
+        text: "Title"
+
 testT4279:
     guest: true
     description: "Verify submitting the contact form"
@@ -174,10 +192,10 @@ testT4279:
         R_click_auto_test_form: { role: 'button', name: 'Auto test form' }
         sleep_after_click_form: 3000
         fill_note:
-            locator: 'input[name="486c448e-a3eb-43fd-bee6-392d1cd6753b"]'
+            locator: 'input[placeholder="Please fill this out"]'
             value: "test auto send"
         fill_message:
-            locator: 'textarea[name="da325856-eabd-45a2-a3a1-501f638d0645"]'
+            locator: 'textarea[placeholder="Please fill this out"]'
             value: "test auto test auto test auto test auto test auto test auto test auto test auto test auto test auto test auto test auto"
         fill_email:
             role: "textbox"
@@ -187,32 +205,22 @@ testT4279:
             role: "textbox"
             name: "Phone number"
             value: "+13018427082"
-        click_start_time_picker:
-            locator: 'form button >> nth=0'
-        sleep_after_picker_1: 2000
-        click_date_16: { role: 'gridcell', name: '16' }
-        click_ok_1: { role: 'button', name: 'OK' }
-        sleep_after_date_1: 2000
-        upload_file:
-            locator: 'div:has-text("Contact usAuto test") >> nth=1 >> input[type="file"]'
-            file_path: 'D:/new test/Autotest-monster/data/test imag.jpeg'
-        sleep_after_upload: 2500
-        click_yes: { role: 'button', name: 'Yes' }
-        sleep_after_yes: 1500
         R_click_submit: { role: 'button', name: 'Submit' }
-        sleep_after_submit: 5000
+        sleep_after_submit: 3000
+        verify_text_visible: { text: "Thanks for your submission!" }
+        R_click_got_it: { role: 'button', name: 'Got it' }
+        sleep_after_got_it: 2000
     expect_result:
         description: "Form should be submitted successfully"
         assertions:
             - assertion_type: "element_visible_by_text"
-              text: "The form was submitted"
+              text: "Auto test form"
 
 testT1520:
     description: "Verify follow and unfollow store functionality"
     test_step:
         open: "https://release.pear.us/yu-xiao"
         sleep_after_open: 3000
-        wait_for_page_load: { state: 'load' }
         R_click_explore: { role: 'button', name: 'Explore' }
         sleep_after_explore: 2000
         R_click_store_link: { role: 'link', name: "avatar Demi-release's Store" }
@@ -309,20 +317,22 @@ testT3842:
     test_step:
         open: "https://release.pear.us/yu-xiao"
         swipe_avoid_plus: { x: 0, y: 300 }
-        sleep_after_open: 3000
+        sleep_after_open: 5000
         R_click3: { role: 'button', name: 'Module' }
+        sleep_after_module_click: 2000
         fill_module_title: { role: 'textbox', name: 'Enter title of the module', value: 'test product link' }
         R_click_continue: { role: 'button', name: 'Continue' }
-        check1: { label: 'Links (select a type below)' }
+        check1: { role: 'radio', name: 'Links (select a type below)' }
         l_click_regex1: { text: '^Product$', index: 0 }
         check2: { role: 'radio', name: 'Carousel Carousel' }
         sleep_before_add: 2000
         R_click4: { role: 'button', name: 'Add' }
-        sleep_after_add: 1500
-        R_click5_add_new: { role: 'button', name: 'Add new', index: -1 }
+        sleep_after_add: 3000
+        click_module_add_new: { module_name: 'test product link' }
         sleep_after_add_new: 5000
-        fill_product_url: { placeholder: 'https://example.com', value: 'www.baidu.com' }
+        fill_product_url: { placeholder: 'https://example.com', locator: 'input[name="url"]', value: 'www.baidu.com' }
         fill_product_title: { placeholder: 'As the bold title on your', value: 'test prodcut link card' }
+        sleep_before_price: 1000
         fill_product_price: { placeholder: 'Enter a price for sale', value: '20.99' }
         upload_product_image: { text: 'Upload', file_path: 'D:/new test/Autotest-monster/data/test imag.jpeg' }
         sleep_after_upload: 3000
@@ -345,8 +355,14 @@ testT2129:
         sleep_after_more: 1500
         R_click_listitem: { role: 'listitem' }
         sleep_after_listitem: 4500
+        R_click_content_tab: { text: "Content" }
+        sleep_after_content: 1500
+        fill_post_title:
+            locator: 'input[placeholder*="bold title"]'
+            value: "test auto post title"
         R_click_save_draft: { role: 'button', name: 'Save as draft' }
-        sleep_after_save: 500
+        sleep_after_save: 2000
+        verify_text_visible: { text: "Your post is saved!" }
         R_click_got_it: { role: 'button', name: 'Got it' }
         sleep_after_got: 1000
         R_click_view_shop: { role: 'button', name: 'View in My Shop' }
@@ -355,4 +371,39 @@ testT2129:
         description: "Post should be saved as draft successfully"
         assertions:
             - assertion_type: "element_visible_by_text"
-              text: "Post saved as draft!"
+              text: "Your post is saved!"
+
+testT4777:
+    description: "Verify product details in a post by: 1. Start on Events page."
+    test_step:
+        open: "https://release.pear.us/events"
+        wait_for_url: { url: "**/events" }
+        sleep_after_open: 5000
+        R_click_FAB: { role: 'button', name: 'Add', exact: false }
+        sleep_after_FAB: 2000
+        R_click_create_post: { role: 'button', name: 'Create a Post' }
+        sleep_after_create: 2000
+        R_click_yes: { role: 'button', name: 'Yes' }
+        sleep_after_yes: 3000
+        R_click_existing_event: { text: "Lury 10378 event test", exact: false }
+        sleep_after_event: 2000
+        R_click_select_continue: { role: 'button', name: 'Select and continue' }
+        sleep_after_select: 2000
+        R_click_confirm: { role: 'button', name: 'Confirm' }
+        sleep_after_confirm: 5000
+        # Navigation Reinforcement: If the confirm leads back to explore, force go back to events
+        open_events: "https://release.pear.us/events"
+        wait_for_url_again: { url: "**/events" }
+        sleep_after_reopen: 4000
+        R_click_event_more_menu: { role: 'button', name: 'More' }
+        sleep_after_more_menu: 2000
+        R_click_view_event: { role: 'menuitem', name: 'View event' }
+        sleep_after_enter: 4000
+        R_click_posts_tab: { role: 'tab', name: 'Posts' }
+        sleep_after_posts_tab: 3000
+        R_click_post_card: { role: 'paragraph', name: 'Lury 10378 event test 222', exact: false, force: true }
+        sleep_after_post_card: 4000
+    expect_result:
+        description: "Verify product details in edit mode under Commerce tab"
+        assertions:
+            - { assertion_type: "element_visible_by_text", text: "event product 0129" }

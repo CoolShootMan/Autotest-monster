@@ -63,7 +63,7 @@ def verify_waterfall_layout(page: Page, v: dict):
         pytest.fail("No cards found for Waterfall.")
 
 def goto_storefront(page: Page, v: dict):
-    page.goto(v["url"], wait_until="networkidle", timeout=v["timeout"])
+    page.goto(v["url"], wait_until="load", timeout=v["timeout"])
 
 def publish_button_click(page: Page, v: dict):
     page.get_by_role("button", name="Publish").click()
@@ -76,9 +76,9 @@ def verify_navigation_after_publish(page: Page, v: dict):
         if "warning_message" in v:
             logger.warning(v["warning_message"])
         if "fallback_url" in v:
-            page.goto(v["fallback_url"], wait_until="networkidle", timeout=v.get("fallback_timeout", 60000))
+            page.goto(v["fallback_url"], wait_until="load", timeout=v.get("fallback_timeout", 60000))
     # Ensure layout changes are synchronized
-    page.reload(wait_until="networkidle")
+    page.reload(wait_until="load")
     page.wait_for_timeout(2000)
 
 def click_mui_svg_icon(page: Page, v: dict):

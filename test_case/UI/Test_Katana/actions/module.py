@@ -30,3 +30,12 @@ def click_add_new_product(page: Page, v: dict):
     # Click "Add new" button within specific module
     module_name = v.get("module_name")
     page.locator("div").filter(has_text=re.compile(f"^{module_name}Add new$")).get_by_role("button").first.click()
+
+def click_module_add_new(page: Page, v: dict):
+    # Click the "Add new" button specifically for the named module
+    module_name = v.get("module_name")
+    logger.info(f"Targeting 'Add new' button for module: {module_name}")
+    # Scope to the module title and then find the button next to it
+    module_container = page.locator("div").filter(has_text=re.compile(f"{module_name}", re.I)).filter(has_text="Add new").last
+    module_container.get_by_role("button", name="Add new").click(timeout=10000)
+    logger.info(f"Clicked 'Add new' for module {module_name}")

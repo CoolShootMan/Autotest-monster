@@ -1,0 +1,32 @@
+import re
+from playwright.sync_api import Playwright, sync_playwright, expect
+
+
+def run(playwright: Playwright) -> None:
+    browser = playwright.chromium.launch(headless=False)
+    context = browser.new_context(storage_state="D:\\new test\\Autotest-monster\\test_case\\UI\\Test_Katana\\cookie_release.json")
+    page = context.new_page()
+    page.goto("https://release.pear.us/events")
+    page.get_by_role("link", name="Settings").click()
+    page.get_by_role("heading", name="Off").click()
+    page.get_by_label("", exact=True).check()
+    page.get_by_role("button", name="Save").click()
+    page.get_by_role("button", name="Back").click()
+    page.get_by_role("button", name="0", exact=True).click()
+    page.get_by_role("button", name="Create a Post").click()
+    page.get_by_role("button", name="Yes").click()
+    page.get_by_role("dialog").get_by_text("UpcomingLury 10378 event").click()
+    page.get_by_role("button", name="Select and continue").click()
+    page.get_by_role("button", name="Confirm").click()
+    page.get_by_role("cell", name="Lury 10378 event test Lury").get_by_role("paragraph").click()
+    page.get_by_role("tab", name="Posts").click()
+    page.get_by_role("button", name="Image of Product Lury 10378 event test 222 | Tue, Jan 31 (EST) Get Tickets lury-10378-event-test-7 Offer up to 25%", exact=True).click()
+    page.locator("div:nth-child(3) > .MuiStack-root.katana-2x2sks > .MuiPaper-root").click()
+
+    # ---------------------
+    context.close()
+    browser.close()
+
+
+with sync_playwright() as playwright:
+    run(playwright)
